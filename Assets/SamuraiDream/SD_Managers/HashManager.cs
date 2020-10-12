@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace SamuraiGame
+{
+    public class HashManager : Singleton<HashManager>
+    {
+        public Dictionary<TransitionParameter, int> DicMainParams = new Dictionary<TransitionParameter, int>();
+        public Dictionary<CameraTrigger, int> DicCameraTriggers = new Dictionary<CameraTrigger, int>();
+        public Dictionary<AI_Walk_Transitions, int> DicAIParams = new Dictionary<AI_Walk_Transitions, int>();
+        private void Awake()
+        {
+            //Animation transitions
+            TransitionParameter[] arrParams = System.Enum.GetValues(typeof(TransitionParameter)) as TransitionParameter[];
+
+            foreach (TransitionParameter t in arrParams)
+            {
+                DicMainParams.Add(t, Animator.StringToHash(t.ToString()));
+            }
+
+            //Camera parameters
+            CameraTrigger[] arrCamTrans = System.Enum.GetValues(typeof(CameraTrigger)) as CameraTrigger[];
+
+            foreach (CameraTrigger ct in arrCamTrans)
+            {
+                DicCameraTriggers.Add(ct, Animator.StringToHash(ct.ToString()));
+            }
+
+            //AI Transitions
+            AI_Walk_Transitions[] arrAITrans = System.Enum.GetValues(typeof(AI_Walk_Transitions)) as AI_Walk_Transitions[];
+
+            foreach (AI_Walk_Transitions wt in arrAITrans)
+            {
+                DicAIParams.Add(wt, Animator.StringToHash(wt.ToString()));
+            }
+        }
+    }
+}
