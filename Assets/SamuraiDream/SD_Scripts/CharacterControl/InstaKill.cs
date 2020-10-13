@@ -55,11 +55,11 @@ namespace SamuraiGame
                     {
                         continue;
                     }
-                    if (c.animationProgress.IsRunning(typeof(Attack)))
+                    if (c.ANIMATION_DATA.IsRunning(typeof(Attack)))
                     {
                         continue;
                     }
-                    if (control.animationProgress.IsRunning(typeof(Attack)))
+                    if (control.ANIMATION_DATA.IsRunning(typeof(Attack)))
                     {
                         continue;
                     }
@@ -88,8 +88,8 @@ namespace SamuraiGame
         }
         private void DeathByInstaKill(CharacterController attacker)
         {
-            control.animationProgress.CurrentRunningAbilities.Clear();
-            attacker.animationProgress.CurrentRunningAbilities.Clear();
+            control.ANIMATION_DATA.CurrentRunningAbilities.Clear();
+            attacker.ANIMATION_DATA.CurrentRunningAbilities.Clear();
 
             Vector3 dir = control.transform.position - attacker.transform.position;
 

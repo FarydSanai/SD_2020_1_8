@@ -23,6 +23,8 @@ namespace SamuraiGame
         [Space(10)] public CollisionSphereData collisionSphereData;
         [Space(10)] public InstaKillData instaKillData;
         [Space(10)] public GroundData groundData;
+        [Space(10)] public AttackData attackData;
+        [Space(10)] public AnimationData animationData;
         private void Awake()
         {
             control = GetComponentInParent<CharacterController>();
@@ -40,6 +42,8 @@ namespace SamuraiGame
         public void UpdateSubComponents()
         {
             UpdateSubComponent(SubComponentType.MANUALINPUT);
+            UpdateSubComponent(SubComponentType.PLAYER_ANIMATION);
+            UpdateSubComponent(SubComponentType.PLAYER_ATTACK);
             UpdateSubComponent(SubComponentType.DAMAGE_DETECTOR);
         }
 

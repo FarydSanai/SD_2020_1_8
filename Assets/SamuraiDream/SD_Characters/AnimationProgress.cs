@@ -5,16 +5,10 @@ namespace SamuraiGame
 {
     public class AnimationProgress : MonoBehaviour
     {
-        public Dictionary<StateData, int> CurrentRunningAbilities = new Dictionary<StateData, int>();
-
         public bool CameraShaken;
         public List<PoolObjectType> PoolObjectTypes = new List<PoolObjectType>();
         public MoveForward LatestMoveForward;
         public MoveUp LatestMoveUp;
-
-        [Header("AttackButton")]
-        public bool AttackTriggered;
-        public bool AttackButtonIsReset;
 
         [Header("GroundMovement")]
         public bool IsIgnoreCharacterTime;
@@ -35,44 +29,6 @@ namespace SamuraiGame
         private void Awake()
         {
             control = GetComponentInParent<CharacterController>();
-        }
-        private void Update()
-        {
-            if (control.Attack)
-            {
-                if (AttackButtonIsReset)
-                {
-                    AttackTriggered = true;
-                    AttackButtonIsReset = false;
-                }
-            } else
-            {
-                AttackTriggered = false;
-                AttackButtonIsReset = true;
-            }
-            if (IsRunning(typeof(LockTransition)))
-            {
-                if (control.animationProgress.LockTransition)
-                {
-                    control.SkinnedMeshAnimator.
-                        SetBool(HashManager.Instance.DicMainParams[TransitionParameter.LockTransition],
-                                true);
-                } else
-                {
-                    control.SkinnedMeshAnimator.
-                        SetBool(HashManager.Instance.DicMainParams[TransitionParameter.LockTransition],
-                                false);
-                }
-            }
-            else
-            {
-                if (control.SkinnedMeshAnimator.parameters.Length != 0)
-                {
-                    control.SkinnedMeshAnimator.
-                    SetBool(HashManager.Instance.DicMainParams[TransitionParameter.LockTransition],
-                            false);
-                }
-            }
         }
         public void NullifyUpVelocity()
         {
@@ -135,17 +91,6 @@ namespace SamuraiGame
             else if(LatestMoveForward.Speed < 0f)
             {
                 return true;
-            }
-            return false;
-        }
-        public bool IsRunning(System.Type type)
-        {
-            foreach (KeyValuePair<StateData, int> data in CurrentRunningAbilities)
-            {
-                if (data.Key.GetType() == type)
-                {
-                    return true;
-                }
             }
             return false;
         }

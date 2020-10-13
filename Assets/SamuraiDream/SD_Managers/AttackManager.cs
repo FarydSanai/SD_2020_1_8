@@ -6,10 +6,10 @@ namespace SamuraiGame
 {
     public class AttackManager : Singleton<AttackManager>
     {
-        public List<AttackInfo> CurrentAttacks = new List<AttackInfo>();
+        public List<AttackCondition> CurrentAttacks = new List<AttackCondition>();
         public void ForceDeregister(CharacterController control)
         {
-            foreach (AttackInfo info in CurrentAttacks)
+            foreach (AttackCondition info in CurrentAttacks)
             {
                 if (info.Attacker == control)
                 {

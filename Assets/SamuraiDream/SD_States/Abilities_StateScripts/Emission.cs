@@ -17,7 +17,7 @@ namespace SamuraiGame
         }
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (characterState.characterControl.animationProgress.IsRunning(typeof(Attack)))
+            if (characterState.ANIMATION_DATA.IsRunning(typeof(Attack)))
             {
                 if (characterState.characterControl.jointsEmission != null)
                 {

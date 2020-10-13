@@ -57,7 +57,7 @@ namespace SamuraiGame
         }
         public void UpdateBoxCollider_Size()
         {
-            if (!control.animationProgress.IsRunning(typeof(UpdateBoxCollider)))
+            if (!control.ANIMATION_DATA.IsRunning(typeof(UpdateBoxCollider)))
             {
                 return;
             }
@@ -70,7 +70,7 @@ namespace SamuraiGame
         }
         public void UpdateBoxCollider_Center()
         {
-            if (!control.animationProgress.IsRunning(typeof(UpdateBoxCollider)))
+            if (!control.ANIMATION_DATA.IsRunning(typeof(UpdateBoxCollider)))
             {
                 return;
             }

@@ -1100,9 +1100,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Jump
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: TransitionIndex
+    m_EventTreshold: 3
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 823074954249703522}
   m_Solo: 0
@@ -1862,6 +1862,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0433f84f6442e694aafb5780aba2fee8, type: 2}
   - {fileID: 11400000, guid: 49286bb0e8ddf964f9d737ee1ffb8adb, type: 2}
   - {fileID: 11400000, guid: e407e3b5a2a42d549859c01e22e96e1d, type: 2}
+  - {fileID: 11400000, guid: 76a42b62248cec247a1ad35a92a4ba5e, type: 2}
 --- !u!1101 &-2936907877572070551
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -2055,6 +2056,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b678dbab672025e4697653e8188dddb5, type: 2}
   - {fileID: 11400000, guid: f7021d737925ee1408310ed4e2b2c52d, type: 2}
   - {fileID: 11400000, guid: cc11c1b429483c04caa89d408ac4eeda, type: 2}
+  - {fileID: 11400000, guid: 910869af18291e6448bbbb793b548035, type: 2}
 --- !u!1107 &-1888100053563863742
 AnimatorStateMachine:
   serializedVersion: 5
@@ -2532,12 +2534,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Blend
-    m_Type: 1
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -2915,6 +2911,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 10b3d0ec46d97c848a5455928b608cd5, type: 2}
   - {fileID: 11400000, guid: 36331a66f9f67224c8e1e92acb59f770, type: 2}
   - {fileID: 11400000, guid: ba7e95f59f57ad04d8c5151dcb707203, type: 2}
+  - {fileID: 11400000, guid: 1aef406dc401b26469a0eebaa440793d, type: 2}
 --- !u!1102 &1000531035247433096
 AnimatorState:
   serializedVersion: 5
@@ -3833,9 +3830,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Jump
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: TransitionIndex
+    m_EventTreshold: 7
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 823074954249703522}
   m_Solo: 0
@@ -3889,9 +3886,9 @@ AnimatorStateTransition:
   m_PrefabAsset: {fileID: 0}
   m_Name: 
   m_Conditions:
-  - m_ConditionMode: 1
-    m_ConditionEvent: Jump
-    m_EventTreshold: 0
+  - m_ConditionMode: 6
+    m_ConditionEvent: TransitionIndex
+    m_EventTreshold: 4
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -7794054751169094838}
   m_Solo: 0

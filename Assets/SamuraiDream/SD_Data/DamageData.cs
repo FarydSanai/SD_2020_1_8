@@ -11,7 +11,7 @@ namespace SamuraiGame
         public Attack Attack;
         public TriggerDetector DamagedTrigger;
         public GameObject AttackingPart;
-        public AttackInfo BlockedAttack;
+        public AttackCondition BlockedAttack;
         public float HP;
         public Attack MarioStompAttack;
         public Attack SwordThrow;
@@ -19,7 +19,7 @@ namespace SamuraiGame
         public delegate bool ReturnBool();
         public ReturnBool IsDead;
 
-        public delegate void DoSomething(AttackInfo info);
+        public delegate void DoSomething(AttackCondition info);
         public DoSomething TakeDamage;
 
         public void SetData(CharacterController attacker, Attack attack,

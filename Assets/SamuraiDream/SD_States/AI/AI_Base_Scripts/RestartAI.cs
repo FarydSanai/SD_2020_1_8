@@ -31,7 +31,7 @@ namespace SamuraiGame
             }
 
             //Landing
-            if (characterState.characterControl.animationProgress.IsRunning(typeof(Landing)))
+            if (characterState.ANIMATION_DATA.IsRunning(typeof(Landing)))
             {
                 characterState.characterControl.Turbo = false;
                 characterState.characterControl.Jump = false;
@@ -67,8 +67,8 @@ namespace SamuraiGame
             {
                 if (characterState.GROUND_DATA.Ground != null)
                 {
-                    if (!characterState.characterControl.animationProgress.IsRunning(typeof(Jump)) &&
-                        !characterState.characterControl.animationProgress.IsRunning(typeof(JumpPrep)))
+                    if (!characterState.ANIMATION_DATA.IsRunning(typeof(Jump)) &&
+                        !characterState.ANIMATION_DATA.IsRunning(typeof(JumpPrep)))
                     {
                         characterState.characterControl.Turbo = false;
                         characterState.characterControl.Jump = false;
@@ -83,8 +83,8 @@ namespace SamuraiGame
 
             //StartSphere height
             if (characterState.GROUND_DATA.Ground != null && 
-                !characterState.characterControl.animationProgress.IsRunning(typeof(Jump)) &&
-                !characterState.characterControl.animationProgress.IsRunning(typeof(WallJumpPrep)))
+                !characterState.ANIMATION_DATA.IsRunning(typeof(Jump)) &&
+                !characterState.ANIMATION_DATA.IsRunning(typeof(WallJumpPrep)))
             {
                 if (characterState.characterControl.aiProgress.GetStartSphereHeight() > 0.3f)
                 {
@@ -106,7 +106,7 @@ namespace SamuraiGame
 
         private bool AIIsOnGround(CharacterController control)
         {
-            if (!control.animationProgress.IsRunning(typeof(MoveUp)))
+            if (!control.ANIMATION_DATA.IsRunning(typeof(MoveUp)))
             {
                 if (control.RIGID_BODY.useGravity)
                 {

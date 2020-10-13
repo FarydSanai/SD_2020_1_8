@@ -53,6 +53,8 @@ namespace SamuraiGame
         public CollisionSphereData COLLISION_SPHERE_DATA => subComponentProcessor.collisionSphereData;
         public InstaKillData INSTAKILL_DATA => subComponentProcessor.instaKillData;
         public GroundData GROUND_DATA => subComponentProcessor.groundData;
+        public AttackData ATTACK_DATA => subComponentProcessor.attackData;
+        public AnimationData ANIMATION_DATA => subComponentProcessor.animationData;
 
         [Header("Manual setting up")]
         public PlayableCharacterType playableCharacterType;

@@ -38,7 +38,7 @@ namespace SamuraiGame
                 characterState.characterControl.Attack = false;
             }
 
-            characterState.characterControl.animationProgress.AttackTriggered = characterState.characterControl.Attack;
+            characterState.ATTACK_DATA.AttackTriggered = characterState.characterControl.Attack;
    
         }
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
@@ -52,7 +52,7 @@ namespace SamuraiGame
                 control.MoveLeft = false;
                 control.MoveRight = false;
                 if (control.aiProgress.IsFacingTarget() &&
-                    !control.animationProgress.IsRunning(typeof(MoveForward)))
+                    !control.ANIMATION_DATA.IsRunning(typeof(MoveForward)))
                 {
                     control.Attack = true;
                 }
@@ -70,7 +70,7 @@ namespace SamuraiGame
                     control.MoveRight = true;
                     control.MoveLeft = false;
                     if (control.aiProgress.IsFacingTarget() &&
-                        control.animationProgress.IsRunning(typeof(MoveForward)))
+                        control.ANIMATION_DATA.IsRunning(typeof(MoveForward)))
                     {
                         control.Attack = true;
                     }
@@ -80,7 +80,7 @@ namespace SamuraiGame
                     control.MoveRight = false;
                     control.MoveLeft = true;
                     if (control.aiProgress.IsFacingTarget() &&
-                        control.animationProgress.IsRunning(typeof(MoveForward)))
+                        control.ANIMATION_DATA.IsRunning(typeof(MoveForward)))
                     {
                         control.Attack = true;
                     }

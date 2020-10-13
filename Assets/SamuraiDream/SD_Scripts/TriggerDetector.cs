@@ -40,7 +40,7 @@ namespace SamuraiGame
             {
                 if (weapon.Thrower != control)
                 {
-                    AttackInfo info = gameObject.AddComponent<AttackInfo>();
+                    AttackCondition info = gameObject.AddComponent<AttackCondition>();
                     info.CopyInfo(control.DAMAGE_DATA.SwordThrow, control);
 
                     control.DAMAGE_DATA.SetData(

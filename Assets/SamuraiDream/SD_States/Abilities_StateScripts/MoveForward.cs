@@ -86,7 +86,7 @@ namespace SamuraiGame
                 return;
             }
 
-            if (characterState.characterControl.animationProgress.IsRunning(typeof(WallSlide)))
+            if (characterState.ANIMATION_DATA.IsRunning(typeof(WallSlide)))
             {
                 return;
             }
@@ -95,10 +95,10 @@ namespace SamuraiGame
 
             if (characterState.characterControl.Jump)
             {
-                if (characterState.GROUND_DATA.Ground != null)
-                {
-                    animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Jump], true);
-                }
+                //if (characterState.GROUND_DATA.Ground != null)
+                //{
+                //    animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Jump], true);
+                //}
             }
             if (characterState.characterControl.Turbo)
             {

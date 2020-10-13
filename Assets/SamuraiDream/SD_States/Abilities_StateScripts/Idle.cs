@@ -9,10 +9,11 @@ namespace SamuraiGame
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Jump], false);
+            //animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Jump], false);
             animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Attack], false);
             animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Move], false);
 
+            characterState.characterControl.RIGID_BODY.useGravity = true;
             characterState.ROTATION_DATA.LockEarlyTurn = false;
             characterState.ROTATION_DATA.LockDirectionNextState = false;
             characterState.BLOCKING_DATA.ClearFrontBlockingObjDic();
@@ -24,17 +25,17 @@ namespace SamuraiGame
 
             if (characterState.characterControl.Jump)
             {
-                if (!characterState.JUMP_DATA.Jumped)
-                {
-                    if (characterState.GROUND_DATA.Ground != null)
-                    {
-                        animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Jump], true);
-                    }
-                }
+                //if (!characterState.JUMP_DATA.Jumped)
+                //{
+                //    if (characterState.GROUND_DATA.Ground != null)
+                //    {
+                //        animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Jump], true);
+                //    }
+                //}
             }
             else
             {
-                if (!characterState.characterControl.animationProgress.IsRunning(typeof(Jump)))
+                if (!characterState.ANIMATION_DATA.IsRunning(typeof(Jump)))
                 {
                     characterState.JUMP_DATA.Jumped = false;
                 }

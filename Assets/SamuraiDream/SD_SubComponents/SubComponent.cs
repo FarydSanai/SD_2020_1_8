@@ -17,6 +17,8 @@ namespace SamuraiGame
         MOMENTUM_CALCULATOR,
         COLLISION_SPHERES,
         INSTAKILL,
+        PLAYER_ATTACK,
+        PLAYER_ANIMATION,
     }
 
     public abstract class SubComponent : MonoBehaviour

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SamuraiGame
 {
-    public class AttackInfo : MonoBehaviour
+    public class AttackCondition : MonoBehaviour
     {
         public CharacterController Attacker = null;
         public Attack AttackAbility;

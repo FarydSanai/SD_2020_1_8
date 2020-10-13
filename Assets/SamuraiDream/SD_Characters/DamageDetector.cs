@@ -50,7 +50,7 @@ namespace SamuraiGame
                 CheckAttack();
             }
         }
-        private bool AttackIsValid(AttackInfo info)
+        private bool AttackIsValid(AttackCondition info)
         {
             if (info == null)
             {
@@ -89,7 +89,7 @@ namespace SamuraiGame
         }
         private void CheckAttack()
         {
-            foreach (AttackInfo info in AttackManager.Instance.CurrentAttacks)
+            foreach (AttackCondition info in AttackManager.Instance.CurrentAttacks)
             {
                 if (AttackIsValid(info))
                 {
@@ -113,7 +113,7 @@ namespace SamuraiGame
                 }
             }
         }
-        private bool IsCollided(AttackInfo info)
+        private bool IsCollided(AttackCondition info)
         {
             foreach (KeyValuePair<TriggerDetector, List<Collider>> data in control.animationProgress.CollidingBodyParts)
             {
@@ -135,7 +135,7 @@ namespace SamuraiGame
             return false;
         }
 
-        private bool IsInLethalRange(AttackInfo info)
+        private bool IsInLethalRange(AttackCondition info)
         {
             foreach (Collider c in control.RAGDOLL_DATA.BodyParts)
             {
@@ -170,13 +170,13 @@ namespace SamuraiGame
                 return false;
             }
         }
-        private bool IsBLocked(AttackInfo info)
+        private bool IsBLocked(AttackCondition info)
         {
             if (info == damageData.BlockedAttack && damageData.BlockedAttack != null)
             {
                 return true;
             }
-            if (control.animationProgress.IsRunning(typeof(Block)))
+            if (control.ANIMATION_DATA.IsRunning(typeof(Block)))
             {
                 Vector3 dir = info.Attacker.transform.position - control.transform.position;
                 if (dir.z > 0f)
@@ -196,7 +196,7 @@ namespace SamuraiGame
             }
             return false;
         }
-        private void TakeDamage(AttackInfo info)
+        private void TakeDamage(AttackCondition info)
         {
             if (IsDead())
             {
@@ -245,7 +245,7 @@ namespace SamuraiGame
             damageData.HP -= info.AttackAbility.Damage;
 
             AttackManager.Instance.ForceDeregister(control);
-            control.animationProgress.CurrentRunningAbilities.Clear();
+            control.ANIMATION_DATA.CurrentRunningAbilities.Clear();
 
             if (IsDead())
             {

@@ -38,7 +38,7 @@ namespace SamuraiGame
         }
         public override void OnFixedUpdate()
         {
-            if (control.animationProgress.IsRunning(typeof(MoveForward)))
+            if (control.ANIMATION_DATA.IsRunning(typeof(MoveForward)))
             {
                 CheckFrontBlocking();
             }
@@ -50,7 +50,7 @@ namespace SamuraiGame
                 }
             }
             //checking UpBlock while LedgeGrabbing
-            if (control.animationProgress.IsRunning(typeof(MoveUp)))
+            if (control.ANIMATION_DATA.IsRunning(typeof(MoveUp)))
             {
                 if (control.animationProgress.LatestMoveUp.Speed > 0f)
                 {
@@ -115,7 +115,7 @@ namespace SamuraiGame
 
                 foreach (CharacterController c in MarioStumpTargets)
                 {
-                    AttackInfo info = gameObject.AddComponent<AttackInfo>();
+                    AttackCondition info = gameObject.AddComponent<AttackCondition>();
                     info.CopyInfo(c.DAMAGE_DATA.MarioStompAttack, control);
 
                     int index = Random.Range(0, c.RAGDOLL_DATA.BodyParts.Count);

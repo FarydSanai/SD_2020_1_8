@@ -6,7 +6,7 @@ namespace SamuraiGame
 {
     public enum PoolObjectType
     {
-        ATTACKINFO,
+        ATTACK_CONDITION,
         HAMMER_OBJ,
         HAMMER_VFX,
 
@@ -20,9 +20,9 @@ namespace SamuraiGame
 
             switch (objType)
             {
-                case PoolObjectType.ATTACKINFO:
+                case PoolObjectType.ATTACK_CONDITION:
                     {
-                        obj = Instantiate(Resources.Load("AttackInfo", typeof(GameObject)) as GameObject);
+                        obj = Instantiate(Resources.Load("AttackCondition", typeof(GameObject)) as GameObject);
                         break;
                     }
                 case PoolObjectType.HAMMER_OBJ:

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37be0469365936b44baf6d836c8a3b84, type: 3}
-  m_Name: Player_Run_RunningSlide_TransitionIndexer_2
+  m_Name: Player_TransitionIndexer_Walk_Jump_3
   m_EditorClassIdentifier: 
-  Index: 2
-  transitionConditions: 01000000
+  Index: 3
+  transitionConditions: 070000000800000005000000
