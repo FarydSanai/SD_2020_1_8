@@ -20,9 +20,9 @@ namespace SamuraiGame
         [Space(10)] public MomentumData momentumData;
         [Space(10)] public RotationData rotationData;
         [Space(10)] public JumpData jumpData;
-        [Space(10)] public CollisionData collisionData;
+        [Space(10)] public CollisionSphereData collisionSphereData;
         [Space(10)] public InstaKillData instaKillData;
-
+        [Space(10)] public GroundData groundData;
         private void Awake()
         {
             control = GetComponentInParent<CharacterController>();

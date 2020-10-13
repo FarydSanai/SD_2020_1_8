@@ -6,10 +6,10 @@ namespace SamuraiGame
 {
     public class CollisionSpheres : SubComponent
     {
-        public CollisionData collisionData;
+        public CollisionSphereData collisionSphereData;
         private void Start()
         {
-            collisionData = new CollisionData
+            collisionSphereData = new CollisionSphereData
             {
                 FrontSpheres = new List<GameObject>(),
                 BottomSpheres = new List<GameObject>(),
@@ -25,14 +25,14 @@ namespace SamuraiGame
                 Reposition_BackSpheres = Reposition_BackSpheres,
             };
 
-            subComponentProcessor.collisionData = collisionData;
+            subComponentProcessor.collisionSphereData = collisionSphereData;
             subComponentProcessor.ComponentsDic.Add(SubComponentType.COLLISION_SPHERES, this);
 
             SetColliderSpheres();
         }
         public override void OnFixedUpdate()
         {
-            foreach (OverlapChecker oc in collisionData.AllOverlapCheckers)
+            foreach (OverlapChecker oc in collisionSphereData.AllOverlapCheckers)
             {
                 oc.UpdateChecker();
             }
@@ -41,14 +41,19 @@ namespace SamuraiGame
         {
             throw new System.NotImplementedException();
         }
+        private GameObject LoadCollisionSphere()
+        {
+            return Instantiate(Resources.Load("CollisionSphere", typeof(GameObject)),
+                                             Vector3.zero, Quaternion.identity) as GameObject;
+        }
         private void SetColliderSpheres()
         {
             //Bottom
             for (int i = 0; i < 5; i++)
             {
-                GameObject obj = Instantiate(Resources.Load("ColliderEdge", typeof(GameObject)),
-                                             Vector3.zero, Quaternion.identity) as GameObject;
-                collisionData.BottomSpheres.Add(obj);
+                GameObject obj = LoadCollisionSphere();
+
+                collisionSphereData.BottomSpheres.Add(obj);
                 obj.transform.parent = this.transform.Find("Bottom");
             }
 
@@ -57,10 +62,9 @@ namespace SamuraiGame
             //Front
             for (int i = 0; i < 10; i++)
             {
-                GameObject obj = Instantiate(Resources.Load("ColliderEdge", typeof(GameObject)),
-                                             Vector3.zero, Quaternion.identity) as GameObject;
-                collisionData.FrontSpheres.Add(obj);
-                collisionData.FrontOverlapCheckers.Add(obj.GetComponent<OverlapChecker>());
+                GameObject obj = LoadCollisionSphere();
+                collisionSphereData.FrontSpheres.Add(obj);
+                collisionSphereData.FrontOverlapCheckers.Add(obj.GetComponent<OverlapChecker>());
                 obj.transform.parent = this.transform.Find("Front");
             }
 
@@ -69,9 +73,8 @@ namespace SamuraiGame
             //Back
             for (int i = 0; i < 10; i++)
             {
-                GameObject obj = Instantiate(Resources.Load("ColliderEdge", typeof(GameObject)),
-                                             Vector3.zero, Quaternion.identity) as GameObject;
-                collisionData.BackSpheres.Add(obj);
+                GameObject obj = LoadCollisionSphere();
+                collisionSphereData.BackSpheres.Add(obj);
                 obj.transform.parent = this.transform.Find("Back");
             }
             Reposition_BackSpheres();
@@ -79,9 +82,8 @@ namespace SamuraiGame
             //Top
             for (int i = 0; i < 5; i++)
             {
-                GameObject obj = Instantiate(Resources.Load("ColliderEdge", typeof(GameObject)),
-                                             Vector3.zero, Quaternion.identity) as GameObject;
-                collisionData.UpSpheres.Add(obj);
+                GameObject obj = LoadCollisionSphere();
+                collisionSphereData.UpSpheres.Add(obj);
                 obj.transform.parent = this.transform.Find("Up");
             }
 
@@ -89,8 +91,8 @@ namespace SamuraiGame
 
             //Add everything
             OverlapChecker[] arr = this.GetComponentsInChildren<OverlapChecker>();
-            collisionData.AllOverlapCheckers.Clear();
-            collisionData.AllOverlapCheckers.AddRange(arr);
+            collisionSphereData.AllOverlapCheckers.Clear();
+            collisionSphereData.AllOverlapCheckers.AddRange(arr);
 
         }
         private void Reposition_FrontSpheres()
@@ -101,17 +103,17 @@ namespace SamuraiGame
             //float back = boxCollider.bounds.center.z - boxCollider.bounds.extents.z;
             float debth = control.boxCollider.bounds.center.x;
 
-            collisionData.FrontSpheres[0].transform.localPosition =
+            collisionSphereData.FrontSpheres[0].transform.localPosition =
                 new Vector3(debth, bottom + 0.05f, front) - control.transform.position;
 
-            collisionData.FrontSpheres[1].transform.localPosition =
+            collisionSphereData.FrontSpheres[1].transform.localPosition =
                 new Vector3(debth, top, front) - control.transform.position;
 
             float interval = (top - bottom + 0.05f) / 9;
 
-            for (int i = 2; i < collisionData.FrontSpheres.Count; i++)
+            for (int i = 2; i < collisionSphereData.FrontSpheres.Count; i++)
             {
-                collisionData.FrontSpheres[i].transform.localPosition = 
+                collisionSphereData.FrontSpheres[i].transform.localPosition = 
                 new Vector3(debth, bottom + (interval * (i - 1)), front) - control.transform.position;
             }
         }
@@ -123,17 +125,17 @@ namespace SamuraiGame
             float back = control.boxCollider.bounds.center.z - control.boxCollider.bounds.extents.z;
             float debth = control.boxCollider.bounds.center.x;
 
-            collisionData.BottomSpheres[0].transform.localPosition =
+            collisionSphereData.BottomSpheres[0].transform.localPosition =
                 new Vector3(debth, bottom, back) - control.transform.position;
 
-            collisionData.BottomSpheres[1].transform.localPosition =
+            collisionSphereData.BottomSpheres[1].transform.localPosition =
                 new Vector3(debth, bottom, front) - control.transform.position;
 
             float interval = (front - back) / 4;
 
-            for (int i = 2; i < collisionData.BottomSpheres.Count; i++)
+            for (int i = 2; i < collisionSphereData.BottomSpheres.Count; i++)
             {
-                collisionData.BottomSpheres[i].transform.localPosition =
+                collisionSphereData.BottomSpheres[i].transform.localPosition =
                     new Vector3(debth, bottom, back + (interval * (i - 1))) - control.transform.position;
             }
         }
@@ -145,17 +147,17 @@ namespace SamuraiGame
             float back = control.boxCollider.bounds.center.z - control.boxCollider.bounds.extents.z;
             float debth = control.boxCollider.bounds.center.x;
 
-            collisionData.BackSpheres[0].transform.localPosition =
+            collisionSphereData.BackSpheres[0].transform.localPosition =
                 new Vector3(debth, bottom + 0.05f, back) - control.transform.position;
 
-            collisionData.BackSpheres[1].transform.localPosition =
+            collisionSphereData.BackSpheres[1].transform.localPosition =
                 new Vector3(debth, top, back) - control.transform.position;
 
             float interval = (top - bottom + 0.05f) / 9;
 
-            for (int i = 2; i < collisionData.BackSpheres.Count; i++)
+            for (int i = 2; i < collisionSphereData.BackSpheres.Count; i++)
             {
-                collisionData.BackSpheres[i].transform.localPosition =
+                collisionSphereData.BackSpheres[i].transform.localPosition =
                     new Vector3(debth, bottom + (interval * (i - 1)), back) - control.transform.position;
             }
         }
@@ -167,17 +169,17 @@ namespace SamuraiGame
             float back = control.boxCollider.bounds.center.z - control.boxCollider.bounds.extents.z;
             float debth = control.boxCollider.bounds.center.x;
 
-            collisionData.UpSpheres[0].transform.localPosition =
+            collisionSphereData.UpSpheres[0].transform.localPosition =
                 new Vector3(debth, top, back) - control.transform.position;
 
-            collisionData.UpSpheres[1].transform.localPosition =
+            collisionSphereData.UpSpheres[1].transform.localPosition =
                 new Vector3(debth, top, front) - control.transform.position;
 
             float interval = (front - back) / 4;
 
-            for (int i = 2; i < collisionData.UpSpheres.Count; i++)
+            for (int i = 2; i < collisionSphereData.UpSpheres.Count; i++)
             {
-                collisionData.UpSpheres[i].transform.localPosition =
+                collisionSphereData.UpSpheres[i].transform.localPosition =
                     new Vector3(debth, top, back + (interval * (i - 1))) - control.transform.position;
             }
         }

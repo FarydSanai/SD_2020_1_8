@@ -60,14 +60,28 @@ namespace SamuraiGame
         }
         public bool TargetIsGrounded()
         {
-            if (CharacterManager.Instance.GetCharacter(control.aiProgress.pathFindingAgent.Target)
-                                          .animationProgress.Ground == null)
+            CharacterController target = CharacterManager.Instance.GetCharacter(control.aiProgress.pathFindingAgent.Target);
+
+            if (target.GROUND_DATA.Ground == null)
             {
                 return false;
             } 
             else
             {
                 return true;
+            }
+        }
+        public bool TargetIsOnTheSamePlatform()
+        {
+            CharacterController target = CharacterManager.Instance.GetCharacter(control.aiProgress.pathFindingAgent.Target);
+
+            if (target.GROUND_DATA.Ground == control.GROUND_DATA.Ground)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
         public bool EndSphereIsHigher()
@@ -145,18 +159,6 @@ namespace SamuraiGame
         {
             pathFindingAgent.StartSphere.transform.position = pathFindingAgent.Target.transform.position;
             pathFindingAgent.EndSphere.transform.position = pathFindingAgent.Target.transform.position;
-        }
-
-        public bool TargetIsOnTheSamePlatform()
-        {
-            if (CharacterManager.Instance.GetCharacter(control.aiProgress.pathFindingAgent.Target)
-                                         .animationProgress.Ground == control.animationProgress.Ground)
-            {
-                return true;
-            } else
-            {
-                return false;
-            }
         }
         public void SetRandomFlyingKick()
         {

@@ -50,11 +50,9 @@ namespace SamuraiGame
         public MomentumData MOMENTUM_DATA => subComponentProcessor.momentumData;
         public RotationData ROTATION_DATA => subComponentProcessor.rotationData;
         public JumpData JUMP_DATA => subComponentProcessor.jumpData;
-        public CollisionData COLLISION_DATA => subComponentProcessor.collisionData;
+        public CollisionSphereData COLLISION_SPHERE_DATA => subComponentProcessor.collisionSphereData;
         public InstaKillData INSTAKILL_DATA => subComponentProcessor.instaKillData;
-
-        [Header("Gravity")]
-        public ContactPoint[] contactPoints;
+        public GroundData GROUND_DATA => subComponentProcessor.groundData;
 
         [Header("Manual setting up")]
         public PlayableCharacterType playableCharacterType;
@@ -114,7 +112,7 @@ namespace SamuraiGame
         }
         private void OnCollisionStay(Collision collision)
         {
-            contactPoints = collision.contacts;
+            GROUND_DATA.BoxColliderContacts = collision.contacts;
         }
 
         public void CacheCharacterControl(Animator animator)

@@ -25,8 +25,8 @@ namespace SamuraiGame
                 EditorGUI.DrawRect(selectionRect, Color.black);
                 EditorGUI.DropShadowLabel(selectionRect, obj.name.Replace("-", "").ToString());
             }
-            HighlightObj(obj, "LedgeChecker", selectionRect, Color.green);
-            HighlightObj(obj, "BoxColliderUpdater", selectionRect, Color.yellow);
+            //HighlightObj(obj, "LedgeChecker", selectionRect, Color.green);
+            //HighlightObj(obj, "BoxColliderUpdater", selectionRect, Color.yellow);
         }
         static void HighlightObj(GameObject obj, string name, Rect selectionRect, Color color)
         {

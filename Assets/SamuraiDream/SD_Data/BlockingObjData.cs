@@ -6,6 +6,8 @@ namespace SamuraiGame
     [System.Serializable]
     public class BlockingObjData
     {
+        public Vector3 RaycastContact;
+
         public int FrontBlockingDicCount;
         public int UpBlockingDicCount;
 
@@ -20,5 +22,6 @@ namespace SamuraiGame
 
         public ReturnGameObjList FrontBlockingObjectsList;
         public ReturnGameObjList FrontBlockingCharacterList;
+
     }
 }

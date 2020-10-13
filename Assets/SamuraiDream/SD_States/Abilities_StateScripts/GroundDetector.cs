@@ -9,18 +9,7 @@ namespace SamuraiGame
     public class GroundDetector : StateData
     {
         public float Distance;
-        private GameObject TestingSphere;
-        public GameObject TESTING_SPHERE
-        {
-            get
-            {
-                if (TestingSphere == null)
-                {
-                    TestingSphere = GameObject.Find("TestingSphere");
-                }
-                return TestingSphere;
-            }
-        }
+
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             
@@ -42,9 +31,9 @@ namespace SamuraiGame
         }
         private bool IsGrounded(CharacterController control)
         {
-            if (control.contactPoints != null)
+            if (control.GROUND_DATA.BoxColliderContacts != null)
             {
-                foreach (ContactPoint c in control.contactPoints)
+                foreach (ContactPoint c in control.GROUND_DATA.BoxColliderContacts)
                 {
                     float collideBottom = (control.transform.position.y + control.boxCollider.center.y)
                                            - (control.boxCollider.size.y / 2f);
@@ -54,7 +43,7 @@ namespace SamuraiGame
                     {
                         if (Math.Abs(control.RIGID_BODY.velocity.y) < 0.001f)
                         {
-                            control.animationProgress.Ground = c.otherCollider.transform.root.gameObject;
+                            control.GROUND_DATA.Ground = c.otherCollider.transform.root.gameObject;
                             control.BOX_COLLIDER_DATA.LandingPosition = new Vector3(
                                     0f,
                                     c.point.y,
@@ -68,27 +57,29 @@ namespace SamuraiGame
 
             if (control.RIGID_BODY.velocity.y < 0f)
             {
-                foreach (GameObject o in control.COLLISION_DATA.BottomSpheres)
+                foreach (GameObject o in control.COLLISION_SPHERE_DATA.BottomSpheres)
                 {
                     GameObject blockingObj = CollisionDetection.GetCollidingObject(control, o, -Vector3.up, Distance,
-                                                                                   ref control.animationProgress.CollidingPoint);
+                                                                                   ref control.BLOCKING_DATA.RaycastContact);
 
                     if (blockingObj != null)
                     {
                         CharacterController c = CharacterManager.Instance.GetCharacter(blockingObj.transform.root.gameObject);
                         if (c == null)
                         {
+                            control.GROUND_DATA.Ground = blockingObj.transform.root.gameObject;
                             control.BOX_COLLIDER_DATA.LandingPosition = new Vector3(
                                 0f,
-                                control.animationProgress.CollidingPoint.y,
-                                control.animationProgress.CollidingPoint.z);
+                                control.BLOCKING_DATA.RaycastContact.y,
+                                control.BLOCKING_DATA.RaycastContact.z);
+
                             return true;
                         }
                     }
                 }
             }
 
-            control.animationProgress.Ground = null;
+            control.GROUND_DATA.Ground = null;
             return false;
         }
     }

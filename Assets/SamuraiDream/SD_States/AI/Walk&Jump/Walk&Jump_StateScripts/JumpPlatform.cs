@@ -20,7 +20,7 @@ namespace SamuraiGame
             }
 
             float platformDist = characterState.characterControl.aiProgress.pathFindingAgent.EndSphere.transform.position.y
-                               - characterState.COLLISION_DATA.FrontSpheres[0].transform.position.y;
+                               - characterState.COLLISION_SPHERE_DATA.FrontSpheres[0].transform.position.y;
 
             if (platformDist > 0.5f)
             {

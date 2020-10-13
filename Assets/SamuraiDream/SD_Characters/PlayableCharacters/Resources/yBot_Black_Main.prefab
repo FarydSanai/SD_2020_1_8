@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 482240473}
   - component: {fileID: 778648178}
   m_Layer: 9
-  m_Name: SubComponents
+  m_Name: SubComponentProcessor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,6 +139,7 @@ Transform:
   - {fileID: 7130138249667658376}
   - {fileID: 500459399}
   - {fileID: 8019180877891939031}
+  - {fileID: 6921762135994680972}
   - {fileID: 1024575272}
   - {fileID: 1249439001}
   - {fileID: 2110641879}
@@ -206,6 +207,8 @@ MonoBehaviour:
   instaKillData:
     Animation_A: {fileID: 0}
     Animation_B: {fileID: 0}
+  groundData:
+    Ground: {fileID: 0}
 --- !u!1 &500459398
 GameObject:
   m_ObjectHideFlags: 0
@@ -338,7 +341,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482240473}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1024575273
 MonoBehaviour:
@@ -384,7 +387,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482240473}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1249439002
 MonoBehaviour:
@@ -653,7 +656,7 @@ Transform:
   - {fileID: 1962507765}
   - {fileID: 1823307129}
   m_Father: {fileID: 482240473}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2110641880
 MonoBehaviour:
@@ -795,7 +798,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 482240473}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8666280596713156588
 MonoBehaviour:
@@ -1621,6 +1624,51 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &2335041425731302291
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6921762135994680972}
+  - component: {fileID: 6163778757993905177}
+  m_Layer: 9
+  m_Name: PlayerGround
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6921762135994680972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335041425731302291}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 482240473}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6163778757993905177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2335041425731302291}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e5253f5ac365484c94631e010e1a721, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundData:
+    Ground: {fileID: 0}
 --- !u!1 &2340468523542798839
 GameObject:
   m_ObjectHideFlags: 0
@@ -4437,7 +4485,6 @@ MonoBehaviour:
   subComponentProcessor: {fileID: 0}
   animationProgress: {fileID: 0}
   aiProgress: {fileID: 0}
-  damageDetector: {fileID: 0}
   aiController: {fileID: 0}
   boxCollider: {fileID: 0}
   navMeshObstacle: {fileID: 0}
@@ -4484,7 +4531,6 @@ MonoBehaviour:
   AttackButtonIsReset: 0
   IsIgnoreCharacterTime: 0
   HoldingWeapon: {fileID: 0}
-  Ground: {fileID: 0}
   LockTransition: 0
   CollidingPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &8797206949434635271

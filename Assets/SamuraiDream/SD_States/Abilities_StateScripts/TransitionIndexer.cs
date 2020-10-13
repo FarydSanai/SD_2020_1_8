@@ -199,7 +199,7 @@ namespace SamuraiGame
                         break;
                     case TransitionConditionType.BLOCKED_BY_WALL:
                         {
-                            foreach (OverlapChecker oc in control.COLLISION_DATA.FrontOverlapCheckers)
+                            foreach (OverlapChecker oc in control.COLLISION_SPHERE_DATA.FrontOverlapCheckers)
                             {
                                 if (!oc.ObjIsOverlapping)
                                 {
@@ -211,7 +211,7 @@ namespace SamuraiGame
                     case TransitionConditionType.NOT_BLOCKED_BY_WALL:
                         {
                             bool AllIsOverlapping = true;
-                            foreach (OverlapChecker oc in control.COLLISION_DATA.FrontOverlapCheckers)
+                            foreach (OverlapChecker oc in control.COLLISION_SPHERE_DATA.FrontOverlapCheckers)
                             {
                                 if (!oc.ObjIsOverlapping)
                                 {

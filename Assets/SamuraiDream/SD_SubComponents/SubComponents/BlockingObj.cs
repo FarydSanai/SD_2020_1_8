@@ -23,6 +23,7 @@ namespace SamuraiGame
         {
             blockingData = new BlockingObjData
             {
+                RaycastContact = new Vector3(),
                 FrontBlockingDicCount = 0,
                 UpBlockingDicCount = 0,
                 ClearFrontBlockingObjDic = ClearFrontBlockingObjDic,
@@ -161,9 +162,9 @@ namespace SamuraiGame
         {
             if (!control.animationProgress.ForwardIsReversed())
             {
-                FrontSpheresList = control.COLLISION_DATA.FrontSpheres;
+                FrontSpheresList = control.COLLISION_SPHERE_DATA.FrontSpheres;
                 DirBlock = 1f;
-                foreach (GameObject s in control.COLLISION_DATA.BackSpheres)
+                foreach (GameObject s in control.COLLISION_SPHERE_DATA.BackSpheres)
                 {
                     if (FrontBlockingObjs.ContainsKey(s))
                     {
@@ -173,9 +174,9 @@ namespace SamuraiGame
             }
             else
             {
-                FrontSpheresList = control.COLLISION_DATA.BackSpheres;
+                FrontSpheresList = control.COLLISION_SPHERE_DATA.BackSpheres;
                 DirBlock = -1f;
-                foreach (GameObject s in control.COLLISION_DATA.FrontSpheres)
+                foreach (GameObject s in control.COLLISION_SPHERE_DATA.FrontSpheres)
                 {
                     if (FrontBlockingObjs.ContainsKey(s))
                     {
@@ -188,7 +189,7 @@ namespace SamuraiGame
                 GameObject blockingObj = CollisionDetection.GetCollidingObject(control, s, this.transform.forward *
                                                             DirBlock,
                                                             control.animationProgress.LatestMoveForward.BlockDistance,
-                                                            ref control.animationProgress.CollidingPoint);
+                                                            ref control.BLOCKING_DATA.RaycastContact);
 
                 if (blockingObj != null)
                 {
@@ -205,10 +206,10 @@ namespace SamuraiGame
         }
         private void CheckDownBlocking()
         {
-            foreach (GameObject s in control.COLLISION_DATA.BottomSpheres)
+            foreach (GameObject s in control.COLLISION_SPHERE_DATA.BottomSpheres)
             {
                 GameObject blockingObj = CollisionDetection.GetCollidingObject(control, s, Vector3.down,
-                                                                    0.1f, ref control.animationProgress.CollidingPoint);
+                                                                    0.1f, ref control.BLOCKING_DATA.RaycastContact);
                 if (blockingObj != null)
                 {
                     AddBlockingObjToDic(DownBlockingObjs, s, blockingObj);
@@ -221,11 +222,11 @@ namespace SamuraiGame
         }
         private void CheckUpBlocking()
         {
-            foreach (GameObject s in control.COLLISION_DATA.UpSpheres)
+            foreach (GameObject s in control.COLLISION_SPHERE_DATA.UpSpheres)
             {
 
                 GameObject blockingObj = CollisionDetection.GetCollidingObject(control, s, Vector3.up, 0.3f,
-                                                                               ref control.animationProgress.CollidingPoint);
+                                                                               ref control.BLOCKING_DATA.RaycastContact);
 
                 if (blockingObj != null)
                 {

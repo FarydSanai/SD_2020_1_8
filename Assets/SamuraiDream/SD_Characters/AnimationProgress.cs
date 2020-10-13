@@ -23,7 +23,6 @@ namespace SamuraiGame
         public MeleeWeapon HoldingWeapon;
 
         [Header("CollidingObjects")]
-        public GameObject Ground; 
         public Dictionary<TriggerDetector, List<Collider>> CollidingBodyParts =
             new Dictionary<TriggerDetector, List<Collider>>();
         public Dictionary<TriggerDetector, List<Collider>> CollidingWeapons =
@@ -31,8 +30,6 @@ namespace SamuraiGame
 
         [Header("Transition settings")]
         public bool LockTransition;
-
-        public Vector3 CollidingPoint = new Vector3();
 
         private CharacterController control;
         private void Awake()

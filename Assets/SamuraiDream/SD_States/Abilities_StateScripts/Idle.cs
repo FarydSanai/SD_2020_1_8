@@ -26,7 +26,7 @@ namespace SamuraiGame
             {
                 if (!characterState.JUMP_DATA.Jumped)
                 {
-                    if (characterState.characterControl.animationProgress.Ground != null)
+                    if (characterState.GROUND_DATA.Ground != null)
                     {
                         animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Jump], true);
                     }

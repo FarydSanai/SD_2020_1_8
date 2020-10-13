@@ -65,7 +65,7 @@ namespace SamuraiGame
 
             if (characterState.characterControl.aiProgress.BlockCharacter != null)
             {
-                if (characterState.characterControl.animationProgress.Ground != null)
+                if (characterState.GROUND_DATA.Ground != null)
                 {
                     if (!characterState.characterControl.animationProgress.IsRunning(typeof(Jump)) &&
                         !characterState.characterControl.animationProgress.IsRunning(typeof(JumpPrep)))
@@ -82,7 +82,7 @@ namespace SamuraiGame
             }
 
             //StartSphere height
-            if (characterState.characterControl.animationProgress.Ground != null && 
+            if (characterState.GROUND_DATA.Ground != null && 
                 !characterState.characterControl.animationProgress.IsRunning(typeof(Jump)) &&
                 !characterState.characterControl.animationProgress.IsRunning(typeof(WallJumpPrep)))
             {

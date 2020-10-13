@@ -17,7 +17,6 @@ namespace SamuraiGame
             VirtualInputManager.Instance.Jump = Input.GetKey(VirtualInputManager.Instance.DicKeys[InputKeyType.KEY_JUMP]);
             VirtualInputManager.Instance.Block = Input.GetKey(VirtualInputManager.Instance.DicKeys[InputKeyType.KEY_BLOCK]);
             VirtualInputManager.Instance.Attack = Input.GetKey(VirtualInputManager.Instance.DicKeys[InputKeyType.KEY_ATTACK]);
-
         }
     }
 }
