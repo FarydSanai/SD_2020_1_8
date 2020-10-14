@@ -14,7 +14,7 @@ namespace SamuraiGame
 
     }
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AI/SendPathFindingAgent")]
-    public class SendPathFindingAgent : StateData
+    public class SendPathFindingAgent : CharacterAbility
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/WallJumpPrep")]
-    public class WallJumpPrep : StateData
+    public class WallJumpPrep : CharacterAbility
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -23,10 +23,14 @@ namespace SamuraiGame
             {
                 characterState.ROTATION_DATA.FaceForward(true);
             }
+
+            characterState.characterControl.LEDGE_GRAB_DATA.isGrabbingledge = false;
+            characterState.characterControl.RIGID_BODY.useGravity = true;
         }
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            
+            characterState.characterControl.LEDGE_GRAB_DATA.isGrabbingledge = false;
+            characterState.characterControl.RIGID_BODY.useGravity = true;
         }
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {

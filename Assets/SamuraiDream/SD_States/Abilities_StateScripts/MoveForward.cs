@@ -10,7 +10,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/MoveForward")]
-    public class MoveForward : StateData
+    public class MoveForward : CharacterAbility
     {
         public bool debug;
         [Header("General settings")]
@@ -69,7 +69,6 @@ namespace SamuraiGame
 
                 characterState.ROTATION_DATA.LockEarlyTurn = false;
                 characterState.ROTATION_DATA.LockDirectionNextState = false;
-
 
             }
         }

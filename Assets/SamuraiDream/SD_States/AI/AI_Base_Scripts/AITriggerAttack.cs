@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New State", menuName = "SamuraiDream/AI/AITriggerAttack")]
-    public class AITriggerAttack : StateData
+    public class AITriggerAttack : CharacterAbility
     {
         delegate void GroundAttack(CharacterController control);
         private List<GroundAttack> ListGroundAttacks = new List<GroundAttack>();

@@ -16,7 +16,7 @@ namespace SamuraiGame
     }
 
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/Attack")]
-    public class Attack : StateData
+    public class Attack : CharacterAbility
     {
         [Header("Base settings")]
         public bool IsDebug;

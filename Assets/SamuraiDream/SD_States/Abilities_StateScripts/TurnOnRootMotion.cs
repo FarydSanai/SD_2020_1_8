@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New Sate", menuName = "SamuraiDream/AbilityData/TurnOnRootMotion")]
-    public class TurnOnRootMotion : StateData
+    public class TurnOnRootMotion : CharacterAbility
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {

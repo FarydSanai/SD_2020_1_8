@@ -12,7 +12,6 @@ namespace SamuraiGame
         [SerializeField] private Vector3 LedgeCalibration = new Vector3();
         public LedgeCollider Collider1;
         public LedgeCollider Collider2;
-        [SerializeField] private List<string> LedgeTriggerStateNames = new List<string>();
 
         private void Start()
         {
@@ -23,10 +22,7 @@ namespace SamuraiGame
             };
 
             subComponentProcessor.ledgeGrabData = ledgeGrabData;
-
             subComponentProcessor.ComponentsDic.Add(SubComponentType.LEDGECHECKER, this);
-
-            //control.ProcDic.Add(CharacterProc.LEDGE_COLLIDERS_OFF, LedgeCollidersOff);
         }
         public override void OnUpdate()
         {
@@ -60,13 +56,16 @@ namespace SamuraiGame
             {
                 return false;
             }
-            foreach(string s in LedgeTriggerStateNames)
+
+            for (int i = 0; i < HashManager.Instance.ArrLedgeTriggerStates.Length; i++)
             {
-                if (control.animationProgress.StateNameContains(s))
+                AnimatorStateInfo info = control.SkinnedMeshAnimator.GetCurrentAnimatorStateInfo(0);
+                if (info.shortNameHash == HashManager.Instance.ArrLedgeTriggerStates[i])
                 {
                     return true;
                 }
             }
+
             return false;
         }
         private void ProcessLedgeGrab()
@@ -107,34 +106,50 @@ namespace SamuraiGame
             }
 
             ledgeGrabData.isGrabbingledge = true;
-
             control.RIGID_BODY.useGravity = false;
             control.RIGID_BODY.velocity = Vector3.zero;
 
             float y, z;
 
-            y = platformCol.bounds.center.y + platformCol.bounds.extents.y;
+            y = platformCol.transform.position.y + platformCol.bounds.extents.y;
 
             if (control.ROTATION_DATA.IsFacingForward())
             {
-                //z = platform.transform.position.z - platformCol.bounds.extents.z;
-                z = platformCol.bounds.center.z - platformCol.bounds.extents.z;
+                z = platform.transform.position.z - platformCol.bounds.extents.z;
+                //z = platformCol.bounds.center.z - platformCol.bounds.extents.z;
             }
             else
             {
-                //z = platform.transform.position.z + platformCol.bounds.extents.z;
-                z = platformCol.bounds.center.z + platformCol.bounds.extents.z;
+                z = platform.transform.position.z + platformCol.bounds.extents.z;
+                //z = platformCol.bounds.center.z + platformCol.bounds.extents.z;
             }
 
             Vector3 platformEdge = new Vector3(0f, y, z);
 
 
-            if (control.ROTATION_DATA.IsFacingForward())
+            //if (control.ROTATION_DATA.IsFacingForward())
+            //{
+            //    Debug.Log("IsFAcing forward == true");
+            //    control.RIGID_BODY.MovePosition(platformEdge + LedgeCalibration);
+            //} else
+            //{
+            //    Debug.Log("IsFAcing forward == false");
+            //    control.RIGID_BODY.MovePosition(platformEdge + new Vector3(0f, LedgeCalibration.y, -LedgeCalibration.z));
+            //}
+
+            if (control.BLOCKING_DATA.RightSideBlocked())
             {
+                //Debug.Log("IsFAcing forward == true");
                 control.RIGID_BODY.MovePosition(platformEdge + LedgeCalibration);
-            } else
+            }
+            else if(control.BLOCKING_DATA.LeftSideBLocked())
             {
+                //Debug.Log("IsFAcing forward == false");
                 control.RIGID_BODY.MovePosition(platformEdge + new Vector3(0f, LedgeCalibration.y, -LedgeCalibration.z));
+            }
+            else
+            {
+                return false;
             }
 
             return true;

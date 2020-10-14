@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New State", menuName = "SamuraiDream/AbilityData/CheckTurbo")]
-    public class CheckTurbo : StateData
+    public class CheckTurbo : CharacterAbility
     {
         public bool MustRequireMovement;
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)

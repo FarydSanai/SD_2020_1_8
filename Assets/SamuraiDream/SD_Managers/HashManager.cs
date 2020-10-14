@@ -5,11 +5,26 @@ using UnityEngine;
 
 namespace SamuraiGame
 {
+    public enum Ledge_Trigger_States
+    {
+        Fall,
+        RunningJump_Fall,
+        Running_Jump,
+        Jump_Normal,
+        WallSlide,
+        WallJump,
+
+        COUNT,
+    }
+
     public class HashManager : Singleton<HashManager>
     {
         public Dictionary<TransitionParameter, int> DicMainParams = new Dictionary<TransitionParameter, int>();
         public Dictionary<CameraTrigger, int> DicCameraTriggers = new Dictionary<CameraTrigger, int>();
         public Dictionary<AI_Walk_Transitions, int> DicAIParams = new Dictionary<AI_Walk_Transitions, int>();
+
+        public int[] ArrLedgeTriggerStates = new int[(int)Ledge_Trigger_States.COUNT];
+
         private void Awake()
         {
             //Animation transitions
@@ -34,6 +49,12 @@ namespace SamuraiGame
             foreach (AI_Walk_Transitions wt in arrAITrans)
             {
                 DicAIParams.Add(wt, Animator.StringToHash(wt.ToString()));
+            }
+
+            //Ledge trigger states
+            for (int i = 0; i < ArrLedgeTriggerStates.Length; i++)
+            {
+                ArrLedgeTriggerStates[i] = Animator.StringToHash(((Ledge_Trigger_States)i).ToString());
             }
         }
     }

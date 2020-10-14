@@ -11,7 +11,7 @@ namespace SamuraiGame
         {
             animationData = new AnimationData
             {
-                CurrentRunningAbilities = new Dictionary<StateData, int>(),
+                CurrentRunningAbilities = new Dictionary<CharacterAbility, int>(),
                 IsRunning = IsRunning,
             };
 
@@ -51,7 +51,7 @@ namespace SamuraiGame
         }
         private bool IsRunning(System.Type type)
         {
-            foreach (KeyValuePair<StateData, int> data in animationData.CurrentRunningAbilities)
+            foreach (KeyValuePair<CharacterAbility, int> data in animationData.CurrentRunningAbilities)
             {
                 if (data.Key.GetType() == type)
                 {

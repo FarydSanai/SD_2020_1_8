@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/Jump")]
-    public class Jump : StateData
+    public class Jump : CharacterAbility
     {
         [Range(0f, 1f)]
         public float JumpTiming;

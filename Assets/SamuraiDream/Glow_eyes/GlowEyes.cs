@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/VFX/GlowEyes")]
-    public class GlowEyes : StateData
+    public class GlowEyes : CharacterAbility
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {

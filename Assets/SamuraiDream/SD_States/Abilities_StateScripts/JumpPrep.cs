@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/JumpPrep")]
-    public class JumpPrep : StateData
+    public class JumpPrep : CharacterAbility
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {

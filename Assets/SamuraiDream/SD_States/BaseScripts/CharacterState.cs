@@ -8,7 +8,7 @@ namespace SamuraiGame
     {
         public CharacterController characterControl;
         [Space(3)]
-        public List<StateData> ListAbilityData = new List<StateData>();
+        public List<CharacterAbility> ListAbilityData = new List<CharacterAbility>();
 
         public BlockingObjData BLOCKING_DATA => characterControl.subComponentProcessor.blockingData;
         public RagdollData RAGDOLL_DATA => characterControl.subComponentProcessor.ragdollData;
@@ -28,7 +28,7 @@ namespace SamuraiGame
                 CharacterController control = animator.transform.root.GetComponent<CharacterController>();
                 control.CacheCharacterControl(animator);
             }
-            foreach (StateData d in ListAbilityData)
+            foreach (CharacterAbility d in ListAbilityData)
             {
                 d.OnEnter(this, animator, stateInfo);
 
@@ -45,7 +45,7 @@ namespace SamuraiGame
 
         public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            foreach (StateData d in ListAbilityData)
+            foreach (CharacterAbility d in ListAbilityData)
             {
                 d.UpdateAbility(this, animator, stateInfo);
             }
@@ -53,7 +53,7 @@ namespace SamuraiGame
 
         public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            foreach (StateData d in ListAbilityData)
+            foreach (CharacterAbility d in ListAbilityData)
             {
                 d.OnExit(this, animator, stateInfo);
 

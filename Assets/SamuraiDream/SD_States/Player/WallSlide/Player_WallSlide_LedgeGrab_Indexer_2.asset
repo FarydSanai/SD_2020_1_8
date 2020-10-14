@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Player_WallSlide_LedgeGrab_Indexer_2
   m_EditorClassIdentifier: 
   Index: 2
-  transitionConditions: 06000000
+  transitionConditions: 060000000a000000

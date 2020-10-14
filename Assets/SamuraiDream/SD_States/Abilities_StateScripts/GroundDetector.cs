@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/GroundDetector")]
-    public class GroundDetector : StateData
+    public class GroundDetector : CharacterAbility
     {
         public float Distance;
 

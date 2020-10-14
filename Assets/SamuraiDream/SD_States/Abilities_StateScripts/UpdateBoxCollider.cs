@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/UpdateBoxCollider")]
-    public class UpdateBoxCollider : StateData
+    public class UpdateBoxCollider : CharacterAbility
     {
         public Vector3 TargetCenter;
         public float CenterUpdateSpeed;

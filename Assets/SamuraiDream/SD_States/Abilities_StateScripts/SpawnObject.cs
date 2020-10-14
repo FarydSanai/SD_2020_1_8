@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/ObjectData/SpawnObject")]
-    public class SpawnObject : StateData
+    public class SpawnObject : CharacterAbility
     {
         public bool StickToParent;
         public PoolObjectType ObjectType;

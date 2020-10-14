@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/ToggleGravity")]
-    public class ToggleGravity : StateData
+    public class ToggleGravity : CharacterAbility
     {
         public bool OnStart;
         public bool On;

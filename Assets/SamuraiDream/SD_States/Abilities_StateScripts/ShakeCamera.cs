@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/ShakeCamera")]
-    public class ShakeCamera : StateData
+    public class ShakeCamera : CharacterAbility
     {
         [Range(0f, 0.99f)]
         public float ShakeTiming;

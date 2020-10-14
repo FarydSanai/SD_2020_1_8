@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/Death/TriggerRagdoll")]
-    public class TriggerRagdoll : StateData
+    public class TriggerRagdoll : CharacterAbility
     {
         [Range(0f, 1f)]
         public float TriggerTiming;

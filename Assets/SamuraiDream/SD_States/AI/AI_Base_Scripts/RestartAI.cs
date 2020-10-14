@@ -4,7 +4,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New AI state", menuName = "SamuraiDream/AI/RestartAI")]
-    public class RestartAI : StateData
+    public class RestartAI : CharacterAbility
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {

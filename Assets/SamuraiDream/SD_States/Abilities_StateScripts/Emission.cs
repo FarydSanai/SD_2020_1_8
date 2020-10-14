@@ -9,7 +9,7 @@ using UnityEngine.UI;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/VFX/Emission")]
-    public class Emission : StateData
+    public class Emission : CharacterAbility
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {

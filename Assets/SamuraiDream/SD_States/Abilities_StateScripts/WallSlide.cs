@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/WallSlide")]
-    public class WallSlide : StateData
+    public class WallSlide : CharacterAbility
     {
         public Vector3 MaxFallVelocity;
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)

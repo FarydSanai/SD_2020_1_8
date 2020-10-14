@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/ResetLocalPosition")]
-    public class ResetLocalPosition : StateData
+    public class ResetLocalPosition : CharacterAbility
     {
         public bool OnStart;
         public bool OnEnd;

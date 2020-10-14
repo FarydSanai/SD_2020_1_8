@@ -40,7 +40,7 @@ namespace SamuraiGame
         ATTACK_IS_BLOCKED,
     }
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/TransitionIndexer")]
-    public class TransitionIndexer : StateData
+    public class TransitionIndexer : CharacterAbility
     {
         public int Index;
         public List<TransitionConditionType> transitionConditions = new List<TransitionConditionType>();

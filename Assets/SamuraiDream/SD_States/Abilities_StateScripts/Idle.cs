@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/Idle")]
-    public class Idle : StateData
+    public class Idle : CharacterAbility
     {
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -13,7 +13,7 @@ namespace SamuraiGame
             animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Attack], false);
             animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Move], false);
 
-            characterState.characterControl.RIGID_BODY.useGravity = true;
+            //characterState.characterControl.RIGID_BODY.useGravity = true;
             characterState.ROTATION_DATA.LockEarlyTurn = false;
             characterState.ROTATION_DATA.LockDirectionNextState = false;
             characterState.BLOCKING_DATA.ClearFrontBlockingObjDic();

@@ -7,7 +7,7 @@ namespace SamuraiGame
     [System.Serializable]
     public class AnimationData
     {
-        public Dictionary<StateData, int> CurrentRunningAbilities;
+        public Dictionary<CharacterAbility, int> CurrentRunningAbilities;
 
         public delegate bool bool_type(System.Type type);
         public bool_type IsRunning;

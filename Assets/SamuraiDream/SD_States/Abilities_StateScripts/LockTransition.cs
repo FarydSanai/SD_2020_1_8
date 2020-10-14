@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/LockTransition")]
-    public class LockTransition : StateData
+    public class LockTransition : CharacterAbility
     {
         [Range(0f, 1f)]
         public float UnlockTime;

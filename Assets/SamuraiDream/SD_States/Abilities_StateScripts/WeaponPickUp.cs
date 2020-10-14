@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/WeaponPickUp")]
-    public class WeaponPickUp : StateData
+    public class WeaponPickUp : CharacterAbility
     {
         public float PickUpTiming;
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)

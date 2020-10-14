@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/ToggleBoxCollider")]
-    public class ToggleBoxCollider : StateData
+    public class ToggleBoxCollider : CharacterAbility
     {
         public bool OnStart;
         public bool On;

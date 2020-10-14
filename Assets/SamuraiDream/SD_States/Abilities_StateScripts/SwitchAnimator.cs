@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/SwitchAnimator")]
-    public class SwitchAnimator : StateData
+    public class SwitchAnimator : CharacterAbility
     {
         public float SwitchTiming;
         public RuntimeAnimatorController TargetAnimatorController;

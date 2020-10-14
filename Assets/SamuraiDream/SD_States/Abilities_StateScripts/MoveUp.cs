@@ -6,7 +6,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/MoveUp")]
-    public class MoveUp : StateData
+    public class MoveUp : CharacterAbility
     {
         public float Speed;
         public AnimationCurve SpeedGraph;

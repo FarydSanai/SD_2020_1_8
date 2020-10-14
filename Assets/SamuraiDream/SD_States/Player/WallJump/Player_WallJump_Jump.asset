@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Player_WallJump_Jump
   m_EditorClassIdentifier: 
   JumpTiming: 0
-  JumpForce: 100
+  JumpForce: 150
   CancelPull: 0

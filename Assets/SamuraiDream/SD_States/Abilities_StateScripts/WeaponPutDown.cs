@@ -5,7 +5,7 @@ using UnityEngine;
 namespace SamuraiGame
 {
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/WeaponPutDown")]
-    public class WeaponPutDown : StateData
+    public class WeaponPutDown : CharacterAbility
     {
         public float PutDownTiming;
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
