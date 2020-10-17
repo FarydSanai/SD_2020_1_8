@@ -116,7 +116,7 @@ namespace SamuraiGame
         {
             GROUND_DATA.BoxColliderContacts = collision.contacts;
         }
-        public void CacheCharacterControl(Animator animator)
+        public void InitCharacterStates(Animator animator)
         {
             CharacterState[] arr = animator.GetBehaviours<CharacterState>();
             foreach (CharacterState s in arr)

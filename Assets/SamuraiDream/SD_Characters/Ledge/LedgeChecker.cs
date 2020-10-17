@@ -48,14 +48,14 @@ namespace SamuraiGame
             {
                 return false;
             }
-            if (Collider1.CollidedObjects.Count == 0)
-            {
-                return false;
-            }
-            if (Collider2.CollidedObjects.Count > 0)
-            {
-                return false;
-            }
+            //if (Collider1.CollidedObjects.Count == 0)
+            //{
+            //    return false;
+            //}
+            //if (Collider2.CollidedObjects.Count > 0)
+            //{
+            //    return false;
+            //}
 
             for (int i = 0; i < HashManager.Instance.ArrLedgeTriggerStates.Length; i++)
             {

@@ -22,7 +22,7 @@ namespace SamuraiGame
             float platformDist = characterState.characterControl.aiProgress.pathFindingAgent.EndSphere.transform.position.y
                                - characterState.COLLISION_SPHERE_DATA.FrontSpheres[0].transform.position.y;
 
-            if (platformDist > 0.5f)
+            if (platformDist > 0.1f)
             {
                 if (characterState.characterControl.aiProgress.pathFindingAgent.StartSphere.transform.position.z <
                     characterState.characterControl.aiProgress.pathFindingAgent.EndSphere.transform.position.z)
@@ -38,7 +38,7 @@ namespace SamuraiGame
                     characterState.characterControl.MoveLeft = true;
                 }
             }
-            if (platformDist < 0.5f)
+            if (platformDist < 0.1f)
             {
                 characterState.characterControl.MoveRight = false;
                 characterState.characterControl.MoveLeft = false;

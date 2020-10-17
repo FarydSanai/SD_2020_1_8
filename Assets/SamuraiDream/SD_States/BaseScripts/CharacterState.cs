@@ -26,7 +26,7 @@ namespace SamuraiGame
             if (characterControl == null)
             {
                 CharacterController control = animator.transform.root.GetComponent<CharacterController>();
-                control.CacheCharacterControl(animator);
+                control.InitCharacterStates(animator);
             }
             foreach (CharacterAbility d in ListAbilityData)
             {

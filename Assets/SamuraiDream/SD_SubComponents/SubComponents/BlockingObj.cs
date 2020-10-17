@@ -115,6 +115,11 @@ namespace SamuraiGame
 
                 foreach (CharacterController c in MarioStumpTargets)
                 {
+                    if (control.aiController != null && c.aiController != null)
+                    {
+                        break;
+                    }
+
                     AttackCondition info = gameObject.AddComponent<AttackCondition>();
                     info.CopyInfo(c.DAMAGE_DATA.MarioStompAttack, control);
 

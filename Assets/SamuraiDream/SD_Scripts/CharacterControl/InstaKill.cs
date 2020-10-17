@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -75,7 +76,14 @@ namespace SamuraiGame
                     {
                         continue;
                     }
-
+                    if (Math.Abs(c.gameObject.transform.position.y - control.gameObject.transform.position.y) > 0.01f)
+                    {
+                        continue;
+                    }
+                    if (c.ANIMATION_DATA.IsRunning(typeof(Block)))
+                    {
+                        continue;
+                    }
                     c.INSTAKILL_DATA.DeathByInstaKill(control);
 
                     return;

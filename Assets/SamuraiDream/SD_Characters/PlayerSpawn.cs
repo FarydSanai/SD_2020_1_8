@@ -33,7 +33,7 @@ namespace SamuraiGame
 
             GameObject obj = Instantiate(Resources.Load(objName, typeof(GameObject))) as GameObject;
 
-            obj.transform.position = this.transform.position;            
+            obj.transform.position = this.transform.position;
             GetComponent<MeshRenderer>().enabled = false;
 
             CharacterController control = CharacterManager.Instance.GetCharacter(characterSelect.SelectedCharacterType);
