@@ -12,14 +12,13 @@ namespace SamuraiGame
         public int UpBlockingDicCount;
 
         public delegate void DoSomething();
-        public delegate bool ReturnBool();
-        public delegate List<GameObject> ReturnGameObjList();
-
         public DoSomething ClearFrontBlockingObjDic;
 
+        public delegate bool ReturnBool();
         public ReturnBool LeftSideBLocked;
         public ReturnBool RightSideBlocked;
 
+        public delegate List<GameObject> ReturnGameObjList();
         public ReturnGameObjList FrontBlockingObjectsList;
         public ReturnGameObjList FrontBlockingCharacterList;
 

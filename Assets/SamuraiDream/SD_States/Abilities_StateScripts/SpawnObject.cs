@@ -17,7 +17,6 @@ namespace SamuraiGame
         {
             if (SpawnTiming == 0)
             {
-                //CharacterController control = characterState.GetCharacterController(animator);
                 SpawnObj(characterState.characterControl);
             }
         }

@@ -17,6 +17,7 @@ namespace SamuraiGame
             characterState.ROTATION_DATA.LockEarlyTurn = false;
             characterState.ROTATION_DATA.LockDirectionNextState = false;
             characterState.BLOCKING_DATA.ClearFrontBlockingObjDic();
+
         }
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {

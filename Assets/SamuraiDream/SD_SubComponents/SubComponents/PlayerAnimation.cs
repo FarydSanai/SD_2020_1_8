@@ -14,9 +14,9 @@ namespace SamuraiGame
                 CurrentRunningAbilities = new Dictionary<CharacterAbility, int>(),
                 IsRunning = IsRunning,
             };
-
             subComponentProcessor.animationData = animationData;
             subComponentProcessor.ComponentsDic.Add(SubComponentType.PLAYER_ANIMATION, this);
+
         }
         public override void OnFixedUpdate()
         {
