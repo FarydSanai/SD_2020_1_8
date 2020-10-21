@@ -274,7 +274,7 @@ MonoBehaviour:
   ThrowOffset: {x: 0, y: 1.1, z: 0.7}
   IsThrown: 0
   FlyingForward: 0
-  FlightSpeed: 10
-  RotationSpeed: 1080
+  FlightSpeed: 25
+  RotationSpeed: 450
   Thrower: {fileID: 0}
   SwordTip: {fileID: 368579999188991456}

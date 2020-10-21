@@ -6,6 +6,7 @@ namespace SamuraiGame
 {
     public class EnemySpawnManager : Singleton<EnemySpawnManager>
     {
-        public List<GameObject> AllEnemyList = new List<GameObject>();
+        public List<GameObject> AliveEnemyList = new List<GameObject>();
+        public List<GameObject> DeadEnemyList = new List<GameObject>();
     }
 }

@@ -250,6 +250,9 @@ namespace SamuraiGame
             if (IsDead())
             {
                 control.RAGDOLL_DATA.RagdollTriggered = true;
+
+                EnemySpawnManager.Instance.AliveEnemyList.Remove(control.gameObject);
+                EnemySpawnManager.Instance.DeadEnemyList.Add(control.gameObject);
             }
             else
             {

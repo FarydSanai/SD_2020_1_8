@@ -35,7 +35,7 @@ namespace SamuraiGame
                 if (ANIMATION_DATA.CurrentRunningAbilities.ContainsKey(d))
                 {
                     ANIMATION_DATA.CurrentRunningAbilities[d] += 1;
-                } 
+                }
                 else
                 {
                     ANIMATION_DATA.CurrentRunningAbilities.Add(d, 1);

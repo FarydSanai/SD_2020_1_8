@@ -17,8 +17,8 @@ namespace SamuraiGame
         }
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
-            if (characterState.ANIMATION_DATA.IsRunning(typeof(Attack)))
-            {
+            //if (characterState.ANIMATION_DATA.IsRunning(typeof(Attack)))
+            //{
                 if (characterState.characterControl.jointsEmission != null)
                 {
                     if (stateInfo.normalizedTime <= 0.5f)
@@ -32,7 +32,7 @@ namespace SamuraiGame
                         characterState.characterControl.jointsEmission.RaiseEmissionLight(val);
                     }
                 }
-            }
+            
         }
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
