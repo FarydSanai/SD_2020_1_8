@@ -1,10 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.ShaderGraph.Internal;
-using UnityEngine;
-using UnityEngine.Experimental.GlobalIllumination;
-using UnityEngine.Rendering.Universal;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 namespace SamuraiGame
 {

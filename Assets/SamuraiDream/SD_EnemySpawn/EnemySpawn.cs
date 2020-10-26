@@ -36,14 +36,8 @@ namespace SamuraiGame
         }
         private void Update()
         {
-            if (EnemySpawnManager.Instance.AliveEnemyList.Count >= MaxAliveEnemiesCount)
-            {
-                if (SpawnRoutine != null)
-                {
-                    StopCoroutine(SpawnRoutine);
-                }
-            }
-            if (EnemySpawnManager.Instance.DeadEnemyList.Count >= MaxEnemiesCount)
+            if (EnemySpawnManager.Instance.AliveEnemyList.Count >= MaxAliveEnemiesCount ||
+                EnemySpawnManager.Instance.DeadEnemyList.Count >= MaxEnemiesCount)
             {
                 if (SpawnRoutine != null)
                 {

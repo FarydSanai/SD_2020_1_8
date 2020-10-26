@@ -131,12 +131,10 @@ namespace SamuraiGame
                 CharacterManager.Instance.Characters.Add(this);
             }
         }
-
         public void MoveForward(float speed, float speedGraph)
         {
             transform.Translate(Vector3.forward * speed * speedGraph * Time.deltaTime);
         }
-
         public GameObject GetChildObj(string name)
         {
 

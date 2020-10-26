@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using SamuraiGame;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,16 +25,19 @@ public class CustomCoroutine : MonoBehaviour
     }
     IEnumerator _MyCoroutine()
     {
-            /*
-             write your code
-             */
-            Debug.Log("Coroutine : " + (Num++)); // <-- could delete this row
+        /*
+            write your code
+            */
+        Debug.Log("Coroutine : " + (Num++)); // <-- could delete this row
 
-            NumReloaded = false;
+        NumReloaded = false;
 
-            yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1f);
 
-            MyCoroutine = null;
-            NumReloaded = true; ;
+        yield return new WaitUntil(() => VirtualInputManager.Instance.Attack);
+        MyCoroutine = null;
+        NumReloaded = true;
+
+
     }
 }

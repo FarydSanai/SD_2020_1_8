@@ -6,15 +6,15 @@ namespace SamuraiGame
 {
     public class GameEvent : MonoBehaviour
     {
-        List<GameEventListener> ListListeners = new List<GameEventListener>();
+        public List<GameEventListener> ListenersList = new List<GameEventListener>();
         public GameObject EventObj { get; private set; }
         private void Awake()
         {
-            ListListeners.Clear();
+            ListenersList.Clear();
         }
         public void Raise()
         {
-            foreach(GameEventListener listener in ListListeners)
+            foreach(GameEventListener listener in ListenersList)
             {
                 listener.OnRaiseEvent();
             }
@@ -22,16 +22,16 @@ namespace SamuraiGame
         public void Raise(GameObject eventObj)
         {
             EventObj = eventObj;
-            foreach (GameEventListener listener in ListListeners)
+            foreach (GameEventListener listener in ListenersList)
             {
                 listener.OnRaiseEvent();
             }
         }
         public void AddListener(GameEventListener listener)
         {
-            if (!ListListeners.Contains(listener))
+            if (!ListenersList.Contains(listener))
             {
-                ListListeners.Add(listener);
+                ListenersList.Add(listener);
             }
         }
     }
