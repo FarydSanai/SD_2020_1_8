@@ -17,7 +17,7 @@ MonoBehaviour:
   LockDirection: 1
   LockDirectionNextState: 1
   Constant: 1
-  Speed: 10
+  Speed: 8
   BlockDistance: 0.125
   SpeedGraph:
     serializedVersion: 2
@@ -50,3 +50,4 @@ MonoBehaviour:
   StartingMomentum: 0
   MaxMomentum: 0
   ClearMomentumOnExit: 0
+  MoveOnHit: 0

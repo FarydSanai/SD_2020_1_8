@@ -14,18 +14,17 @@ namespace SamuraiGame
     public class TooltipsLoader : MonoBehaviour
     {
         public TooltipsType tooltipsType;
-
         public GameObject UI_Text;
 
         TextMeshProUGUI TooltipText;
         CharacterController control;
         Coroutine TooltipRoutine;
+
         MovingTooltips movingTooltips;
 
         public delegate bool CharacterCurrentState(CharacterController control);
         public List<CharacterCurrentState> CharacterCurrentStatesList = new List<CharacterCurrentState>();
 
-        public Dictionary<string, bool> TooltipsDic = new Dictionary<string, bool>();
         public List<string> TooltipsList = new List<string>();
         private void Start()
         {
@@ -36,22 +35,21 @@ namespace SamuraiGame
             //Subscribe to events
             GameEventsManager.Instance.showTooltip += ShowTooltip;
 
+            //Clear current tooltips list
+            TooltipsList.Clear();
+            CharacterCurrentStatesList.Clear();
+
             //Set Tooltips type
             if (tooltipsType == TooltipsType.MOVING_SYSTEM)
             {
-                movingTooltips = this.gameObject.GetComponent<MovingTooltips>();
+                movingTooltips = this.GetComponentInChildren<MovingTooltips>();
 
-                if (CharacterCurrentStatesList.Count == 0)
-                {
-                    CharacterCurrentStatesList.AddRange(movingTooltips.MovingStates);
-                }
+                TooltipsList.AddRange(movingTooltips.MovingTooltipsList);
+                CharacterCurrentStatesList.AddRange(movingTooltips.MovingStates);
+
             }
 
-            for (int i = 0; i < TooltipsList.Count; i++)
-            {
-                TooltipsDic.Add(TooltipsList[i], false);
-            }
-
+            //Start tooltips coroutine
             if (TooltipRoutine == null)
             {
                 TooltipRoutine = StartCoroutine(_NextTooltip());
@@ -67,7 +65,6 @@ namespace SamuraiGame
             {
                 yield return new WaitForSeconds(0.5f);
 
-                //TooltipText.text = TooltipsList[i];
                 GameEventsManager.Instance.ShowTooltipEvent(i);
 
                 yield return new WaitUntil(() => CharacterCurrentStatesList[i](control));

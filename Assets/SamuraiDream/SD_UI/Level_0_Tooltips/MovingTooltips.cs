@@ -14,6 +14,13 @@ namespace SamuraiGame
             MovingStates.Add(CharacterMove);
             MovingStates.Add(CharacterRun);
             MovingStates.Add(CharacterJump);
+            MovingStates.Add(CharacterHighJump);
+            MovingStates.Add(CharacterLongJump);
+            MovingStates.Add(CharacterGrabPlatform);
+            MovingStates.Add(CharacerClimb);
+            MovingStates.Add(CharacterSlide);
+            MovingStates.Add(CharacterRoll);
+
         }
         private bool CharacterMove(CharacterController control)
         {
@@ -47,6 +54,53 @@ namespace SamuraiGame
             }
             return false;
         }
-
+        private bool CharacterHighJump(CharacterController control)
+        {
+            if (control.ANIMATION_DATA.IsRunning(typeof(Jump)) && control.Jump)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool CharacterLongJump(CharacterController control)
+        {
+            if (CharacterRun(control) && control.Jump)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool CharacterGrabPlatform(CharacterController control)
+        {
+            if (control.LEDGE_GRAB_DATA.isGrabbingledge)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool CharacerClimb(CharacterController control)
+        {
+            if (control.LEDGE_GRAB_DATA.isGrabbingledge && control.MoveUp)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool CharacterSlide(CharacterController control)
+        {
+            if (CharacterRun(control) && control.MoveDown)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool CharacterRoll(CharacterController control)
+        {
+            if (CharacterRun(control) && control.MoveUp)
+            {
+                return true;
+            }
+            return false;
+        }
     }
 }

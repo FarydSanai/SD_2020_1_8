@@ -49,6 +49,12 @@ namespace SamuraiGame
                                     c.point.y,
                                     c.point.z);
 
+
+                            if (control.RIGID_BODY.useGravity == false)
+                            {
+                                return false;
+                            }
+
                             return true;
                         }
                     }

@@ -4676,7 +4676,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1261404464}
   - component: {fileID: 1261404463}
-  - component: {fileID: 1261404465}
   m_Layer: 0
   m_Name: TooltipsLoader
   m_TagString: Untagged
@@ -4698,11 +4697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipsType: 1
   UI_Text: {fileID: 55488606}
-  TooltipsList:
-  - Try walk
-  - Try run
-  - Try jump
-  - Good job!
+  TooltipsList: []
 --- !u!4 &1261404464
 Transform:
   m_ObjectHideFlags: 0
@@ -4713,23 +4708,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 405.3382, y: 303.34195, z: -63.335205}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1874075267}
   m_Father: {fileID: 0}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1261404465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1261404462}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43c9c01c41898ec4cafb37f80b78fb7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MovingTooltipsList: []
 --- !u!1 &1271027920
 GameObject:
   m_ObjectHideFlags: 0
@@ -7031,6 +7014,59 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aa541d38da2cd643aec89b050153446, type: 3}
+--- !u!1 &1874075266
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1874075267}
+  - component: {fileID: 1874075268}
+  m_Layer: 0
+  m_Name: MovingTooltips
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1874075267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874075266}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1261404464}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1874075268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874075266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43c9c01c41898ec4cafb37f80b78fb7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MovingTooltipsList:
+  - try walk
+  - try run
+  - try jump
+  - try high jump
+  - try long jump
+  - try grab platform
+  - try climb platform
+  - try slide
+  - try roll
 --- !u!4 &1901472795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 508290761436230222, guid: 36b72271dfa67ef4b8cf749ebe2c3b0c, type: 3}
@@ -8036,6 +8072,10 @@ PrefabInstance:
     - target: {fileID: 6355435256535111449, guid: 45615835403898946b7fa5cacb677406, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -0.005145379
+      objectReference: {fileID: 0}
+    - target: {fileID: 8526211936089368376, guid: 45615835403898946b7fa5cacb677406, type: 3}
+      propertyPath: playableCharacterType
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8526211936089368377, guid: 45615835403898946b7fa5cacb677406, type: 3}
       propertyPath: m_LocalPosition.x

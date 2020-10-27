@@ -9,7 +9,7 @@ namespace SamuraiGame
         NONE,
         YELLOW,
         BLUE,
-        GREEN,
+        DEFAULT,
     }
 
     [CreateAssetMenu(fileName = "characterSelect", menuName = "SamuraiDream/CharacterSelection/CharacterSelect")]

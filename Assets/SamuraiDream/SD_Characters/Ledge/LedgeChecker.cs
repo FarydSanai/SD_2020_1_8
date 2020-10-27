@@ -26,7 +26,7 @@ namespace SamuraiGame
         }
         public override void OnUpdate()
         {
-            throw new System.NotImplementedException();
+            
         }
         public override void OnFixedUpdate()
         {
@@ -40,19 +40,22 @@ namespace SamuraiGame
             if (IsLedgeGrabCondition())
             {
                 ProcessLedgeGrab();
+
+                //if (ledgeGrabData.isGrabbingledge &&
+                //    !control.RIGID_BODY.useGravity &&
+                //    !control.SkinnedMeshAnimator.GetBool(HashManager.Instance.DicMainParams[TransitionParameter.Grounded])
+                //    )
+                //{
+                //    if (!control.ANIMATION_DATA.IsRunning(typeof(LedgeGrabState)))
+                //    {
+                //        Debug.Break();
+                //    }
+                //}
             }
         }
         private bool IsLedgeGrabCondition()
         {
             if (!control.Jump)
-            {
-                return false;
-            }
-            if (Collider1.CollidedObjects.Count == 0)
-            {
-                return false;
-            }
-            if (Collider2.CollidedObjects.Count > 0)
             {
                 return false;
             }
@@ -109,6 +112,8 @@ namespace SamuraiGame
             control.RIGID_BODY.useGravity = false;
             control.RIGID_BODY.velocity = Vector3.zero;
 
+            //Debug.Log(ledgeGrabData.isGrabbingledge);
+
             float y, z;
 
             y = platformCol.transform.position.y + platformCol.bounds.extents.y;
@@ -126,25 +131,12 @@ namespace SamuraiGame
 
             Vector3 platformEdge = new Vector3(0f, y, z);
 
-
-            //if (control.ROTATION_DATA.IsFacingForward())
-            //{
-            //    Debug.Log("IsFAcing forward == true");
-            //    control.RIGID_BODY.MovePosition(platformEdge + LedgeCalibration);
-            //} else
-            //{
-            //    Debug.Log("IsFAcing forward == false");
-            //    control.RIGID_BODY.MovePosition(platformEdge + new Vector3(0f, LedgeCalibration.y, -LedgeCalibration.z));
-            //}
-
             if (control.BLOCKING_DATA.RightSideBlocked())
             {
-                //Debug.Log("IsFAcing forward == true");
                 control.RIGID_BODY.MovePosition(platformEdge + LedgeCalibration);
             }
             else if(control.BLOCKING_DATA.LeftSideBLocked())
             {
-                //Debug.Log("IsFAcing forward == false");
                 control.RIGID_BODY.MovePosition(platformEdge + new Vector3(0f, LedgeCalibration.y, -LedgeCalibration.z));
             }
             else

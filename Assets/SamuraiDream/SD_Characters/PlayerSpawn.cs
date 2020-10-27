@@ -24,7 +24,7 @@ namespace SamuraiGame
                         objName = "yBot_Blue";
                     }
                     break;
-                case PlayableCharacterType.GREEN:
+                case PlayableCharacterType.DEFAULT:
                     {
                         objName = "yBot_Green";
                     }
