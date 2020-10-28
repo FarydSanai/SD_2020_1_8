@@ -19,18 +19,6 @@ namespace SamuraiGame
             }
             return null;
         }
-
-        public CharacterController GetCharacter(Animator animator)
-        {
-            foreach (CharacterController control in Characters)
-            {
-                if (control.SkinnedMeshAnimator == animator)
-                {
-                    return control;
-                }
-            }
-            return null;
-        }
         public CharacterController GetCharacter(GameObject obj)
         {
             foreach (CharacterController control in Characters)

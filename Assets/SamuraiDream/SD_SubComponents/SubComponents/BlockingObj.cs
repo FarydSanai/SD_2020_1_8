@@ -32,8 +32,8 @@ namespace SamuraiGame
                 FrontBlockingObjectsList = GetFrontBlockingObjsList,
                 FrontBlockingCharacterList = GetFrontBlockingCharacters,
             };
-            subComponentProcessor.ComponentsDic.Add(SubComponentType.BLOCKINGOBJECTS, this);
             subComponentProcessor.blockingData = blockingData;
+            subComponentProcessor.ComponentsDic.Add(SubComponentType.BLOCKINGOBJECTS, this);
         }
         public override void OnFixedUpdate()
         {

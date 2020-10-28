@@ -302,7 +302,7 @@ namespace SamuraiGame
                             {
                                 return false;
                             }
-                            if (!control.animationProgress.HoldingWeapon.name.Contains("Emissive_Katana"))
+                            if (!control.animationProgress.HoldingWeapon.name.Contains("Sword"))
                             {
                                 return false;
                             }

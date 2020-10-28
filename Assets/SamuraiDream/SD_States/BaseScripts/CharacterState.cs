@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,11 +7,14 @@ namespace SamuraiGame
 {
     public class CharacterState : StateMachineBehaviour
     {
-        public CharacterController characterControl;
+        [NonSerialized] public CharacterController characterControl;
+
         [Space(3)]
         public List<CharacterAbility> ListAbilityData = new List<CharacterAbility>();
 
         public BlockingObjData BLOCKING_DATA => characterControl.subComponentProcessor.blockingData;
+        public GroundData GROUND_DATA => characterControl.subComponentProcessor.groundData;
+        public AnimationData ANIMATION_DATA => characterControl.subComponentProcessor.animationData;
         public RagdollData RAGDOLL_DATA => characterControl.subComponentProcessor.ragdollData;
         public BoxColliderData BOX_COLLIDER_DATA => characterControl.subComponentProcessor.boxColliderData;
         public VerticalVelocityData VERTICAL_VELOCITY_DATA => characterControl.subComponentProcessor.verticalVelocityData;
@@ -18,9 +22,8 @@ namespace SamuraiGame
         public RotationData ROTATION_DATA => characterControl.subComponentProcessor.rotationData;
         public JumpData JUMP_DATA => characterControl.subComponentProcessor.jumpData;
         public CollisionSphereData COLLISION_SPHERE_DATA => characterControl.subComponentProcessor.collisionSphereData;
-        public GroundData GROUND_DATA => characterControl.subComponentProcessor.groundData;
+
         public AttackData ATTACK_DATA => characterControl.subComponentProcessor.attackData;
-        public AnimationData ANIMATION_DATA => characterControl.subComponentProcessor.animationData;
         public override void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             if (characterControl == null)
@@ -32,13 +35,13 @@ namespace SamuraiGame
             {
                 d.OnEnter(this, animator, stateInfo);
 
-                if (ANIMATION_DATA.CurrentRunningAbilities.ContainsKey(d))
+                if (characterControl.ANIMATION_DATA.CurrentRunningAbilities.ContainsKey(d))
                 {
-                    ANIMATION_DATA.CurrentRunningAbilities[d] += 1;
+                    characterControl.ANIMATION_DATA.CurrentRunningAbilities[d] += 1;
                 }
                 else
                 {
-                    ANIMATION_DATA.CurrentRunningAbilities.Add(d, 1);
+                    characterControl.ANIMATION_DATA.CurrentRunningAbilities.Add(d, 1);
                 }
             }
         }

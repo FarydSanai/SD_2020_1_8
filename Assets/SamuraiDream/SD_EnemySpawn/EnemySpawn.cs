@@ -15,8 +15,10 @@ namespace SamuraiGame
     public class EnemySpawn : MonoBehaviour
     {
         public float SpawnDelay;
+
         public int MaxAliveEnemiesCount;
         public int MaxEnemiesCount;
+
         public EnemyType[] enemyArr;
 
         public Coroutine SpawnRoutine;
@@ -67,11 +69,9 @@ namespace SamuraiGame
             string enemyTypeStr = enemyArr[rand].ToString();
 
             GameObject enemyObj = Instantiate(Resources.Load(enemyTypeStr, typeof(GameObject)) as GameObject);
-
+            
             EnemySpawnManager.Instance.AliveEnemyList.Add(enemyObj);
-
             enemyObj.transform.position = this.transform.position;
-
         }
     }
 }

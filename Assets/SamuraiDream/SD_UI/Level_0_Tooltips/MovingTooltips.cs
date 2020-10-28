@@ -9,7 +9,7 @@ namespace SamuraiGame
     {
         public List<string> MovingTooltipsList = new List<string>();
         public List<TooltipsLoader.CharacterCurrentState> MovingStates = new List<TooltipsLoader.CharacterCurrentState>();
-        private void Start()
+        private void Awake()
         {
             MovingStates.Add(CharacterMove);
             MovingStates.Add(CharacterRun);

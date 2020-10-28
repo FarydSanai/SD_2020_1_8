@@ -36,8 +36,8 @@ namespace SamuraiGame
             GameEventsManager.Instance.showTooltip += ShowTooltip;
 
             //Clear current tooltips list
-            TooltipsList.Clear();
-            CharacterCurrentStatesList.Clear();
+            //TooltipsList.Clear();
+            //CharacterCurrentStatesList.Clear();
 
             //Set Tooltips type
             if (tooltipsType == TooltipsType.MOVING_SYSTEM)
@@ -45,19 +45,21 @@ namespace SamuraiGame
                 movingTooltips = this.GetComponentInChildren<MovingTooltips>();
 
                 TooltipsList.AddRange(movingTooltips.MovingTooltipsList);
-                CharacterCurrentStatesList.AddRange(movingTooltips.MovingStates);
-
+                if (CharacterCurrentStatesList.Count == 0)
+                {
+                    CharacterCurrentStatesList.AddRange(movingTooltips.MovingStates);
+                }
             }
 
             //Start tooltips coroutine
+            if (TooltipRoutine != null)
+            {
+                StopCoroutine(_NextTooltip());
+            }
             if (TooltipRoutine == null)
             {
                 TooltipRoutine = StartCoroutine(_NextTooltip());
             }
-        }
-        private void Update()
-        {
-            
         }
         IEnumerator _NextTooltip()
         {
