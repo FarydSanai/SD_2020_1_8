@@ -9,8 +9,8 @@ namespace SamuraiGame
     {
         public ManualInputData manualInputData;
 
-        private List<InputKeyType> DoubleTaps = new List<InputKeyType>();
-        private List<InputKeyType> UpKeys = new List<InputKeyType>();
+        [SerializeField] private List<InputKeyType> DoubleTaps = new List<InputKeyType>();
+        [SerializeField] private List<InputKeyType> UpKeys = new List<InputKeyType>();
         private Dictionary<InputKeyType, float> DicDoubleTapTimings = new Dictionary<InputKeyType, float>();
 
         private void Start()
@@ -28,7 +28,7 @@ namespace SamuraiGame
         }
         public override void OnFixedUpdate()
         {
-            throw new System.NotImplementedException();
+
         }
         public override void OnUpdate()
         {

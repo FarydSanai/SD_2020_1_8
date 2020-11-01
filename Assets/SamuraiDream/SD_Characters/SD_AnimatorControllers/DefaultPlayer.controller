@@ -890,6 +890,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: Attack
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: LockTransition
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4162606035351018713}
   m_Solo: 0
@@ -1503,7 +1506,6 @@ MonoBehaviour:
   ListAbilityData:
   - {fileID: 11400000, guid: ff36f8ba1f08ce543b508996a02f2f1c, type: 2}
   - {fileID: 11400000, guid: bd03861acf59e1a46a0b7d7854cc75b2, type: 2}
-  - {fileID: 11400000, guid: c030389060ab07642b08123169a1a240, type: 2}
 --- !u!1107 &-4051974470546534735
 AnimatorStateMachine:
   serializedVersion: 5
@@ -4580,6 +4582,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a12c84234ed699543a9b686725e56e07, type: 2}
   - {fileID: 11400000, guid: b38ea67d174140f479ebd5cbfc6bb69f, type: 2}
   - {fileID: 11400000, guid: 2a22c383444e0104ca6453c1b96411ad, type: 2}
+  - {fileID: 11400000, guid: 33ce2d6fb6c6e124d9d0866ca7b5467a, type: 2}
 --- !u!1101 &5872715233426041185
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
@@ -4688,6 +4691,7 @@ MonoBehaviour:
   ListAbilityData:
   - {fileID: 11400000, guid: b424555fe59b431418ce604f359afe98, type: 2}
   - {fileID: 11400000, guid: 7f921be9930f6ea4e985ca42353130f7, type: 2}
+  - {fileID: 11400000, guid: 2bd6899d21c873b4e842e5f2159db1f0, type: 2}
 --- !u!1101 &6169290194006559048
 AnimatorStateTransition:
   m_ObjectHideFlags: 1

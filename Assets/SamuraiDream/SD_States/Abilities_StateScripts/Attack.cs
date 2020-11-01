@@ -81,7 +81,12 @@ namespace SamuraiGame
             RegisterAttack(characterState, animator, stateInfo);
             DeregisterAttack(characterState, animator, stateInfo);
             CheckCombo(characterState, animator, stateInfo);
-        } 
+        }
+        public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
+        {
+            animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Attack], false);
+            ClearAttack();
+        }
 
         public void RegisterAttack(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
@@ -148,11 +153,6 @@ namespace SamuraiGame
                     }
                 }
             }
-        }
-        public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
-        {
-            animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Attack], false);
-            ClearAttack();
         }
 
         public void ClearAttack()

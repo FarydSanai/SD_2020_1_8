@@ -5,10 +5,12 @@ using UnityEngine;
 
 namespace SamuraiGame
 {
+    [CreateAssetMenu(fileName = "Tooltips", menuName = "SamuraiDream/Tooltips/MovingTooltips")]
     public class MovingTooltips : MonoBehaviour
     {
         public List<string> MovingTooltipsList = new List<string>();
         public List<TooltipsLoader.CharacterCurrentState> MovingStates = new List<TooltipsLoader.CharacterCurrentState>();
+
         private void Awake()
         {
             MovingStates.Add(CharacterMove);
@@ -20,14 +22,12 @@ namespace SamuraiGame
             MovingStates.Add(CharacerClimb);
             MovingStates.Add(CharacterSlide);
             MovingStates.Add(CharacterRoll);
+            MovingStates.Add(CharacterWallSlide);
+            MovingStates.Add(CharacterWallJump);
 
         }
         private bool CharacterMove(CharacterController control)
         {
-            if (!control.MoveLeft && !control.MoveRight)
-            {
-                return false;
-            }
             if (control.MoveLeft && control.MoveRight)
             {
                 return false;
@@ -56,7 +56,9 @@ namespace SamuraiGame
         }
         private bool CharacterHighJump(CharacterController control)
         {
-            if (control.ANIMATION_DATA.IsRunning(typeof(Jump)) && control.Jump)
+            if (control.ANIMATION_DATA.IsRunning(typeof(Jump)) &&
+                control.Jump 
+                /*&& Input.GetKeyDown(KeyCode.Space)*/)
             {
                 return true;
             }
@@ -90,13 +92,32 @@ namespace SamuraiGame
         {
             if (CharacterRun(control) && control.MoveDown)
             {
-                return true;
+                if (control.GROUND_DATA.Ground != null)
+                {
+                    return true;
+                }
             }
             return false;
         }
         private bool CharacterRoll(CharacterController control)
         {
             if (CharacterRun(control) && control.MoveUp)
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool CharacterWallSlide(CharacterController control)
+        {
+            if (control.ANIMATION_DATA.IsRunning(typeof(WallSlide)))
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool CharacterWallJump(CharacterController control)
+        {
+            if (control.ANIMATION_DATA.IsRunning(typeof(WallJumpPrep)))
             {
                 return true;
             }

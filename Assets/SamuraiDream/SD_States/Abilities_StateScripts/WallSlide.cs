@@ -29,6 +29,7 @@ namespace SamuraiGame
         }
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
+            characterState.JUMP_DATA.CanWallJump = false;
             characterState.VERTICAL_VELOCITY_DATA.MaxWallSlideVelocity = Vector3.zero;
         }
     }

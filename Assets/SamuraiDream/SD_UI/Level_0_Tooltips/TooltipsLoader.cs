@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System.CodeDom;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TMPro;
@@ -10,6 +11,7 @@ namespace SamuraiGame
     {
         NONE,
         MOVING_SYSTEM,
+        ATTACK_SYSTEM,
     }
     public class TooltipsLoader : MonoBehaviour
     {
@@ -21,6 +23,7 @@ namespace SamuraiGame
         Coroutine TooltipRoutine;
 
         MovingTooltips movingTooltips;
+        AttackTooltips attackTooltips;
 
         public delegate bool CharacterCurrentState(CharacterController control);
         public List<CharacterCurrentState> CharacterCurrentStatesList = new List<CharacterCurrentState>();
@@ -36,8 +39,8 @@ namespace SamuraiGame
             GameEventsManager.Instance.showTooltip += ShowTooltip;
 
             //Clear current tooltips list
-            //TooltipsList.Clear();
-            //CharacterCurrentStatesList.Clear();
+            TooltipsList.Clear();
+            CharacterCurrentStatesList.Clear();
 
             //Set Tooltips type
             if (tooltipsType == TooltipsType.MOVING_SYSTEM)
@@ -45,10 +48,14 @@ namespace SamuraiGame
                 movingTooltips = this.GetComponentInChildren<MovingTooltips>();
 
                 TooltipsList.AddRange(movingTooltips.MovingTooltipsList);
-                if (CharacterCurrentStatesList.Count == 0)
-                {
-                    CharacterCurrentStatesList.AddRange(movingTooltips.MovingStates);
-                }
+                CharacterCurrentStatesList.AddRange(movingTooltips.MovingStates);
+            }
+            else if (tooltipsType == TooltipsType.ATTACK_SYSTEM)
+            {
+                attackTooltips = this.GetComponentInChildren<AttackTooltips>();
+
+                TooltipsList.AddRange(attackTooltips.AttackTooltipsList);
+                CharacterCurrentStatesList.AddRange(attackTooltips.AttackStates);
             }
 
             //Start tooltips coroutine
