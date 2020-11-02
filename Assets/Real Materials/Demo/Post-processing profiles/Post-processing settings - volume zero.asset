@@ -92,7 +92,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   mode:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2
 --- !u!114 &4093578681985416490
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -215,7 +215,7 @@ MonoBehaviour:
     min: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 0.206
+    m_Value: 0.2
     min: 0
     max: 1
   clamp:
@@ -224,7 +224,7 @@ MonoBehaviour:
     min: 0
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    m_Value: {r: 1, g: 0.5415094, b: 0.8835855, a: 1}
     hdr: 0
     showAlpha: 0
     showEyeDropper: 1

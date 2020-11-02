@@ -3854,7 +3854,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!135 &1679345832
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3944,8 +3944,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SpawnDelay: 3
-  MaxAliveEnemiesCount: 3
-  MaxEnemiesCount: 7
+  MaxAliveEnemiesCount: 2
+  MaxEnemiesCount: 3
   enemyArr: 
 --- !u!1 &1683069614
 GameObject:
@@ -4579,7 +4579,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954456222}
-  m_LocalRotation: {x: 0.1337192, y: -0.694348, z: 0.13371919, w: 0.6943481}
+  m_LocalRotation: {x: 0.1337192, y: -0.69434804, z: 0.13371922, w: 0.69434804}
   m_LocalPosition: {x: 24.53034, y: 13.748403, z: -0.7325852}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

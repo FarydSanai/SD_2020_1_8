@@ -100,7 +100,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AttackTooltipsList:
   - try attack
-  - try again
+  - try double/triple attack
+  - try jumping punch
+  - try flying kick
+  - try roundKick
+  - try uppercut
+  - try shoruyken
+  - try downsmash
+  - try badkick
 --- !u!1 &2139634467682829189
 GameObject:
   m_ObjectHideFlags: 0
@@ -146,7 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ade19c18ac6dfb743b2fe24473eb936a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tooltipsType: 1
+  tooltipsType: 2
   UI_Text: {fileID: 0}
-  movingTooltips: {fileID: 0}
   TooltipsList: []

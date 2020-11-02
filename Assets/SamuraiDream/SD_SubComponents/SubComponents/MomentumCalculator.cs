@@ -16,16 +16,14 @@ namespace SamuraiGame
             };
 
             subComponentProcessor.momentumData = momentumData; 
-            subComponentProcessor.ComponentsDic.Add(SubComponentType.MOMENTUM_CALCULATOR, this);
         }
         public override void OnFixedUpdate()
         {
-            throw new System.NotImplementedException();
-        }
 
+        }
         public override void OnUpdate()
         {
-            throw new System.NotImplementedException();
+
         }
         private void CalculateMomentum(float speed, float maxMomentum)
         {

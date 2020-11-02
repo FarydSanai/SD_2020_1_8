@@ -13,7 +13,7 @@ namespace SamuraiGame
             serializedObject.Update();
 
             GUI.backgroundColor = Color.green;
-            if (GUILayout.Button("Add RB Default Layers"))
+            if (GUILayout.Button("Add SD Default Layers"))
             {
                 SD_Layers[] arr = System.Enum.GetValues(typeof(SD_Layers)) as SD_Layers[];
 

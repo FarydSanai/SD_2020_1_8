@@ -60,7 +60,6 @@ namespace SamuraiGame
         public PlayableCharacterType playableCharacterType;
         public Animator SkinnedMeshAnimator;
         public RaiseEmission jointsEmission;
-        //public WhiteColorEmission EyesEmission;
 
         public GameObject LeftHandAttack;
         public GameObject RightHandAttack;
@@ -91,7 +90,6 @@ namespace SamuraiGame
             boxCollider = GetComponent<BoxCollider>();
             navMeshObstacle = GetComponent<NavMeshObstacle>();
             jointsEmission = GetComponentInChildren<RaiseEmission>();
-            //EyesEmission = GetComponentInChildren<WhiteColorEmission>();
             aiController = GetComponentInChildren<AIController>();
 
             if (aiController == null)

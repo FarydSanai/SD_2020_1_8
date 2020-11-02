@@ -5,7 +5,6 @@ using UnityEngine;
 
 namespace SamuraiGame
 {
-    [CreateAssetMenu(fileName = "Tooltips", menuName = "SamuraiDream/Tooltips/MovingTooltips")]
     public class MovingTooltips : MonoBehaviour
     {
         public List<string> MovingTooltipsList = new List<string>();

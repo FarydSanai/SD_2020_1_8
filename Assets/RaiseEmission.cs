@@ -16,7 +16,6 @@ namespace SamuraiGame
         public void RaiseEmissionLight(Vector3 val)
         {
             SkinMat.SetVector("_colorIntense", val);
-            //Debug.Log("Eval");
         }
     }
 }
