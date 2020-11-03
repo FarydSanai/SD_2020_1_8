@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a01f0fbb76b7da459f92acadfc81595, type: 3}
   m_Name: PlayerForwardRoll_UpdateBoxCollider
   m_EditorClassIdentifier: 
-  TargetCenter: {x: 0, y: 0.7, z: 0.4}
-  CenterUpdateSpeed: 100
-  TargetSize: {x: 0.5, y: 0.7, z: 0.55}
-  SizeUpdateSpeed: 100
+  TargetCenter: {x: 0, y: 1.8, z: 0}
+  CenterUpdateSpeed: 50
+  TargetSize: {x: 1, y: 0.6, z: 0.6}
+  SizeUpdateSpeed: 50

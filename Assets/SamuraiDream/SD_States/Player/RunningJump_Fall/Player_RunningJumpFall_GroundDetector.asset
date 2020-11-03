@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a01f0fbb76b7da459f92acadfc81595, type: 3}
-  m_Name: PlayerForwardRoll_End_UpdateBoxCollider
+  m_Script: {fileID: 11500000, guid: 5f6d44d77ec9c61439cc0a67bc5ccd40, type: 3}
+  m_Name: Player_RunningJumpFall_GroundDetector
   m_EditorClassIdentifier: 
-  TargetCenter: {x: 0, y: 0.93, z: 0}
-  CenterUpdateSpeed: 100
-  TargetSize: {x: 1, y: 1.91, z: 0.6}
-  SizeUpdateSpeed: 100
+  Distance: 0.1

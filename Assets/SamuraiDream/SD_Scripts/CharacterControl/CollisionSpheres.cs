@@ -39,7 +39,7 @@ namespace SamuraiGame
         }
         public override void OnUpdate()
         {
-            throw new System.NotImplementedException();
+
         }
         private GameObject LoadCollisionSphere()
         {

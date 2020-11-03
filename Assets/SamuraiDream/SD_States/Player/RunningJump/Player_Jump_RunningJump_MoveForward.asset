@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 40f94bf1f5fb7ec4d9747b892168b702, type: 3}
-  m_Name: Player_Jump_RunningJump_MoveForward_Falling
+  m_Name: Player_Jump_RunningJump_MoveForward
   m_EditorClassIdentifier: 
   debug: 0
   AllowEarlyTurn: 0
-  LockDirection: 0
-  LockDirectionNextState: 0
-  Constant: 0
-  Speed: 3
+  LockDirection: 1
+  LockDirectionNextState: 1
+  Constant: 1
+  Speed: 7
   BlockDistance: 0.125
   SpeedGraph:
     serializedVersion: 2
@@ -25,20 +25,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: -1
-      outSlope: -1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.33333334
+      outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 0
-      inSlope: -1
-      outSlope: -1
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 34
       weightedMode: 0
-      inWeight: 0.33333334
+      inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -47,7 +47,7 @@ MonoBehaviour:
   IgnoreStartTime: 0
   IgnoreEndTime: 0
   UseMomentum: 1
-  StartingMomentum: 0
-  MaxMomentum: 3
-  ClearMomentumOnExit: 1
+  StartingMomentum: 1.5
+  MaxMomentum: 2
+  ClearMomentumOnExit: 0
   MoveOnHit: 0

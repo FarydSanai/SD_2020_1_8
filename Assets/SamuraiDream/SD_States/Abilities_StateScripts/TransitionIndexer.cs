@@ -54,6 +54,7 @@ namespace SamuraiGame
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             characterState.JUMP_DATA.CheckWallBlock = StartCheckingWallBlock();
+            characterState.characterControl.JUMP_DATA.CheckWallBlock = StartCheckingWallBlock();
 
             if (animator.GetInteger(HashManager.Instance.DicMainParams[TransitionParameter.TransitionIndex]) == 0)
             {

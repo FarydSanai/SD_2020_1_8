@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 957e85e5c9f33664fa1dd6d6bec6f62e
+guid: 5d087158bf9d2ee4886036f7641617bf
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
       74: -203655887218126122
-    second: ForwardRoll_End
+    second: ForwardRoll_Middle
   externalObjects: {}
   materials:
     materialImportMode: 0
@@ -35,11 +35,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ForwardRoll_End
+      name: ForwardRoll_Middle
       takeName: mixamo.com
       internalID: 0
-      firstFrame: 71
-      lastFrame: 115
+      firstFrame: 61
+      lastFrame: 70
       wrapMode: 0
       orientationOffsetY: 8
       level: 0
@@ -51,7 +51,7 @@ ModelImporter:
       loopBlendOrientation: 1
       loopBlendPositionY: 1
       loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
+      keepOriginalOrientation: 1
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
       heightFromFeet: 0
@@ -526,23 +526,23 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: ForwardRoll_End(Clone)
+    - name: ForwardRoll_Start(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Alpha_Joints
-      parentName: ForwardRoll_End(Clone)
+      parentName: ForwardRoll_Start(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Alpha_Surface
-      parentName: ForwardRoll_End(Clone)
+      parentName: ForwardRoll_Start(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mixamorig:Hips
-      parentName: ForwardRoll_End(Clone)
+      parentName: ForwardRoll_Start(Clone)
       position: {x: 0.0042510335, y: 1.0258602, z: 0.004053786}
       rotation: {x: 0.000000011641532, y: 0.000000011641534, z: -1.355253e-16, w: 1}
       scale: {x: 1, y: 0.99999994, z: 1}
