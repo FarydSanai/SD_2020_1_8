@@ -156,3 +156,4 @@ MonoBehaviour:
   tooltipsType: 2
   UI_Text: {fileID: 0}
   TooltipsList: []
+  DummyTooltips: {fileID: 11400000, guid: 944938a8d3dd48a42ab01f429c52facf, type: 2}

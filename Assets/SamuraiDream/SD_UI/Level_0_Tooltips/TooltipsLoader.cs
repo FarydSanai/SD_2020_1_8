@@ -1,4 +1,5 @@
-﻿using System.CodeDom;
+﻿using JetBrains.Annotations;
+using System.CodeDom;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -18,17 +19,18 @@ namespace SamuraiGame
         public TooltipsType tooltipsType;
         public GameObject UI_Text;
 
-        TextMeshProUGUI TooltipText;
-        CharacterController control;
-        Coroutine TooltipRoutine;
-
-        MovingTooltips movingTooltips;
-        AttackTooltips attackTooltips;
-
         public delegate bool CharacterCurrentState(CharacterController control);
         public List<CharacterCurrentState> CharacterCurrentStatesList = new List<CharacterCurrentState>();
-
         public List<string> TooltipsList = new List<string>();
+
+        private TextMeshProUGUI TooltipText;
+        private CharacterController control;
+        private Coroutine TooltipRoutine;
+
+        private MovingTooltips movingTooltips;
+        private AttackTooltips attackTooltips;
+        public DummyTooltips DummyTooltips;
+
         private void Start()
         {
             //Init fields
@@ -37,6 +39,7 @@ namespace SamuraiGame
 
             //Subscribe to events
             GameEventsManager.Instance.showTooltip += ShowTooltip;
+            GameEventsManager.Instance.showDummyTooltip += ShowDummyTooltip;
 
             //Clear current tooltips list
             TooltipsList.Clear();
@@ -77,11 +80,26 @@ namespace SamuraiGame
                 GameEventsManager.Instance.ShowTooltipEvent(i);
 
                 yield return new WaitUntil(() => CharacterCurrentStatesList[i](control));
+
+                yield return new WaitForSeconds(0.5f);
+
+                GameEventsManager.Instance.ShowDummyTooltipEvent();
+
+                yield return new WaitForSeconds(1f);
+
             }
         }
         public void ShowTooltip(int index)
         {
             TooltipText.text = TooltipsList[index];
+        }
+        public void ShowDummyTooltip()
+        {
+            int rand = Random.Range(0, DummyTooltips.DummyTooltipsList.Count);
+            if (DummyTooltips.DummyTooltipsList.Count > 0)
+            {
+                TooltipText.text = DummyTooltips.DummyTooltipsList[rand];
+            }
         }
         public void HideTooltip()
         {

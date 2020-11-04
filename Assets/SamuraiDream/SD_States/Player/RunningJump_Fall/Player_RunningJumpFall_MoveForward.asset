@@ -17,7 +17,7 @@ MonoBehaviour:
   LockDirection: 0
   LockDirectionNextState: 0
   Constant: 0
-  Speed: 7
+  Speed: 3.5
   BlockDistance: 0.125
   SpeedGraph:
     serializedVersion: 2
@@ -56,7 +56,7 @@ MonoBehaviour:
   IgnoreStartTime: 0
   IgnoreEndTime: 0
   UseMomentum: 1
-  StartingMomentum: 2
-  MaxMomentum: 0.8
+  StartingMomentum: 0
+  MaxMomentum: 2
   ClearMomentumOnExit: 1
   MoveOnHit: 0
