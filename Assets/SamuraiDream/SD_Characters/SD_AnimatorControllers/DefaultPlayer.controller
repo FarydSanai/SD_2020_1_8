@@ -4240,8 +4240,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 156189a5f9cf96f4d9e3044140e3b75f, type: 2}
   - {fileID: 11400000, guid: 89a322d6a70c36243a58900ac1ff8eb1, type: 2}
   - {fileID: 11400000, guid: 15e80d7fdf9e815469a6599be463164b, type: 2}
-  - {fileID: 11400000, guid: a3bc6ffe7d350024a95a6155d356e397, type: 2}
   - {fileID: 11400000, guid: c621a077db164f449b3f3b9ac3b66812, type: 2}
+  - {fileID: 11400000, guid: a3bc6ffe7d350024a95a6155d356e397, type: 2}
 --- !u!1107 &4863190797461545133
 AnimatorStateMachine:
   serializedVersion: 5

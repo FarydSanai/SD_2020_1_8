@@ -103,7 +103,7 @@ namespace SamuraiGame
         }
         public void HideTooltip()
         {
-
+            TooltipText.text = string.Empty;
         }
     }
 }

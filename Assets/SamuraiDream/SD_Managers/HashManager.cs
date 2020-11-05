@@ -16,7 +16,12 @@ namespace SamuraiGame
 
         COUNT,
     }
+    public enum GatesTransitionParams
+    {
+        character_nearby,
 
+        COUNT,
+    }
     public class HashManager : Singleton<HashManager>
     {
         public Dictionary<TransitionParameter, int> DicMainParams = new Dictionary<TransitionParameter, int>();
@@ -24,6 +29,8 @@ namespace SamuraiGame
         public Dictionary<AI_Walk_Transitions, int> DicAIParams = new Dictionary<AI_Walk_Transitions, int>();
 
         public int[] ArrLedgeTriggerStates = new int[(int)Ledge_Trigger_States.COUNT];
+
+        public int[] ArrGatesTransitionParams = new int[(int)GatesTransitionParams.COUNT];
 
         private void Awake()
         {
@@ -55,6 +62,12 @@ namespace SamuraiGame
             for (int i = 0; i < ArrLedgeTriggerStates.Length; i++)
             {
                 ArrLedgeTriggerStates[i] = Animator.StringToHash(((Ledge_Trigger_States)i).ToString());
+            }
+
+            //Gates triggerStates
+            for (int i = 0; i < ArrGatesTransitionParams.Length; i++)
+            {
+                ArrGatesTransitionParams[i] = Animator.StringToHash(((GatesTransitionParams)i).ToString());
             }
         }
     }
