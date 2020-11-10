@@ -36,7 +36,7 @@ namespace SamuraiGame
                 }
             }
 
-            if (!control.BLOCKING_DATA.LeftSideBLocked())
+            if (!control.BLOCKING_DATA.LeftSideBlocked())
             {
                 if (control.MoveLeft)
                 {
@@ -44,7 +44,7 @@ namespace SamuraiGame
                 }
             }
 
-            if (control.BLOCKING_DATA.RightSideBlocked() || control.BLOCKING_DATA.LeftSideBLocked())
+            if (control.BLOCKING_DATA.RightSideBlocked() || control.BLOCKING_DATA.LeftSideBlocked())
             {
                 float lerped = Mathf.Lerp(momentumData.Momentum, 0f, Time.deltaTime * 1.5f);
                 momentumData.Momentum = lerped;

@@ -941,8 +941,8 @@ MonoBehaviour:
   ListAbilityData:
   - {fileID: 11400000, guid: aa5ead8f4ce3d5443ba63dcefba5a4d8, type: 2}
   - {fileID: 11400000, guid: ffecc94afa7191644b05da047e3cc9bd, type: 2}
-  - {fileID: 11400000, guid: 25d9ddabb26bfe84699efd89abd1907d, type: 2}
   - {fileID: 11400000, guid: 49f1de8eb9847c648a3b1fa957751717, type: 2}
+  - {fileID: 11400000, guid: 25d9ddabb26bfe84699efd89abd1907d, type: 2}
   - {fileID: 11400000, guid: 0271c6960e541d340a81cc17881fe34a, type: 2}
 --- !u!1101 &-5601795225988998650
 AnimatorStateTransition:
@@ -1056,11 +1056,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ListAbilityData:
   - {fileID: 11400000, guid: 16873ebb6e16e654c85883be4a9182e8, type: 2}
-  - {fileID: 11400000, guid: 60d95b8274919e142b85501cdb71824b, type: 2}
-  - {fileID: 11400000, guid: 3c26d22e3075e1e4a8887c13c8a1d90c, type: 2}
   - {fileID: 11400000, guid: 28dcc7ec4833ebd4080f9500c6058570, type: 2}
-  - {fileID: 11400000, guid: 4d8ac465dc02be046afa0f24bbab7db7, type: 2}
   - {fileID: 11400000, guid: 57b77deba869de5489903b2754caf650, type: 2}
+  - {fileID: 11400000, guid: 60d95b8274919e142b85501cdb71824b, type: 2}
+  - {fileID: 11400000, guid: 4d8ac465dc02be046afa0f24bbab7db7, type: 2}
+  - {fileID: 11400000, guid: 3c26d22e3075e1e4a8887c13c8a1d90c, type: 2}
   - {fileID: 11400000, guid: 29f2d147a270eb8478e39fa0102a921c, type: 2}
 --- !u!1102 &-5413011128182817123
 AnimatorState:

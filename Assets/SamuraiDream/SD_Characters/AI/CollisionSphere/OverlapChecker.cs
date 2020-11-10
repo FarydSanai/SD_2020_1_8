@@ -20,7 +20,7 @@ namespace SamuraiGame
             }
             if (control.JUMP_DATA.CheckWallBlock)
             {
-                if (control.COLLISION_SPHERE_DATA.FrontOverlapCheckers.Contains(this))
+                if (control.COLLISION_SPHERE_DATA.FrontOverlapCheckerContains(this))
                 {
                     ObjIsOverlapping = CheckObj();
                 }

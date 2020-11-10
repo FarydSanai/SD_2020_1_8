@@ -19,6 +19,8 @@ namespace SamuraiGame
         INSTAKILL,
         PLAYER_ATTACK,
         PLAYER_ANIMATION,
+
+        COUNT,
     }
 
     public abstract class SubComponent : MonoBehaviour
@@ -33,7 +35,7 @@ namespace SamuraiGame
         } 
         private void Awake()
         {
-            subComponentProcessor = GetComponentInParent<SubComponentProcessor>();
+            subComponentProcessor = this.gameObject.GetComponentInParent<SubComponentProcessor>();
         }
         public abstract void OnUpdate();
         public abstract void OnFixedUpdate();

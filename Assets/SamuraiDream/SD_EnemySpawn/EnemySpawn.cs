@@ -59,11 +59,14 @@ namespace SamuraiGame
         {
             while(true)
             {
-                SpawnRandomYBot();
+                GameObject newEnemy = SpawnRandomYBot();
+
+                //newEnemy.GetComponent<CharacterController>().COLLISION_SPHERE_DATA.Reposition_FrontSpheres();
+
                 yield return new WaitForSeconds(SpawnDelay);
             }
         }
-        private void SpawnRandomYBot()
+        private GameObject SpawnRandomYBot()
         {
             int rand = Random.Range(0, enemyArr.Length);
             string enemyTypeStr = enemyArr[rand].ToString();
@@ -72,6 +75,9 @@ namespace SamuraiGame
             
             EnemySpawnManager.Instance.AliveEnemyList.Add(enemyObj);
             enemyObj.transform.position = this.transform.position;
+
+            return enemyObj;
+
         }
     }
 }

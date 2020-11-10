@@ -11,13 +11,14 @@ namespace SamuraiGame
         {
             collisionSphereData = new CollisionSphereData
             {
-                FrontSpheres = new List<GameObject>(),
-                BottomSpheres = new List<GameObject>(),
-                BackSpheres = new List<GameObject>(),
-                UpSpheres = new List<GameObject>(),
+                FrontSpheres = new GameObject[10],
+                BottomSpheres = new GameObject[5],
+                BackSpheres = new GameObject[10],
+                UpSpheres = new GameObject[5],
 
-                FrontOverlapCheckers = new List<OverlapChecker>(),
-                AllOverlapCheckers = new List<OverlapChecker>(),
+                FrontOverlapCheckers = new OverlapChecker[10],
+                FrontOverlapCheckerContains = FrontOverlapCheckersContains,
+                //AllOverlapCheckers = new List<OverlapChecker>(),
 
                 Reposition_TopSpheres = Reposition_TopSpheres,
                 Reposition_FrontSpheres = Reposition_FrontSpheres,
@@ -27,14 +28,13 @@ namespace SamuraiGame
 
             subComponentProcessor.collisionSphereData = collisionSphereData;
             subComponentProcessor.ComponentsDic.Add(SubComponentType.COLLISION_SPHERES, this);
-
             SetColliderSpheres();
         }
         public override void OnFixedUpdate()
         {
-            foreach (OverlapChecker oc in collisionSphereData.AllOverlapCheckers)
+            for (int i = 0; i < collisionSphereData.AllOverlapCheckers.Length; i++)
             {
-                oc.UpdateChecker();
+                collisionSphereData.AllOverlapCheckers[i].UpdateChecker();
             }
         }
         public override void OnUpdate()
@@ -53,7 +53,7 @@ namespace SamuraiGame
             {
                 GameObject obj = LoadCollisionSphere();
 
-                collisionSphereData.BottomSpheres.Add(obj);
+                collisionSphereData.BottomSpheres[i] = obj;
                 obj.transform.parent = this.transform.Find("Bottom");
             }
 
@@ -63,8 +63,9 @@ namespace SamuraiGame
             for (int i = 0; i < 10; i++)
             {
                 GameObject obj = LoadCollisionSphere();
-                collisionSphereData.FrontSpheres.Add(obj);
-                collisionSphereData.FrontOverlapCheckers.Add(obj.GetComponent<OverlapChecker>());
+                collisionSphereData.FrontSpheres[i] = obj;
+                collisionSphereData.FrontOverlapCheckers[i] = obj.GetComponent<OverlapChecker>();
+
                 obj.transform.parent = this.transform.Find("Front");
             }
 
@@ -74,7 +75,7 @@ namespace SamuraiGame
             for (int i = 0; i < 10; i++)
             {
                 GameObject obj = LoadCollisionSphere();
-                collisionSphereData.BackSpheres.Add(obj);
+                collisionSphereData.BackSpheres[i] = obj;
                 obj.transform.parent = this.transform.Find("Back");
             }
             Reposition_BackSpheres();
@@ -83,7 +84,7 @@ namespace SamuraiGame
             for (int i = 0; i < 5; i++)
             {
                 GameObject obj = LoadCollisionSphere();
-                collisionSphereData.UpSpheres.Add(obj);
+                collisionSphereData.UpSpheres[i] = obj;
                 obj.transform.parent = this.transform.Find("Up");
             }
 
@@ -91,8 +92,7 @@ namespace SamuraiGame
 
             //Add everything
             OverlapChecker[] arr = this.GetComponentsInChildren<OverlapChecker>();
-            collisionSphereData.AllOverlapCheckers.Clear();
-            collisionSphereData.AllOverlapCheckers.AddRange(arr);
+            collisionSphereData.AllOverlapCheckers = arr;
 
         }
         private void Reposition_FrontSpheres()
@@ -111,7 +111,7 @@ namespace SamuraiGame
 
             float interval = (top - bottom + 0.05f) / 9;
 
-            for (int i = 2; i < collisionSphereData.FrontSpheres.Count; i++)
+            for (int i = 2; i < collisionSphereData.FrontSpheres.Length; i++)
             {
                 collisionSphereData.FrontSpheres[i].transform.localPosition = 
                 new Vector3(debth, bottom + (interval * (i - 1)), front) - control.transform.position;
@@ -133,7 +133,7 @@ namespace SamuraiGame
 
             float interval = (front - back) / 4;
 
-            for (int i = 2; i < collisionSphereData.BottomSpheres.Count; i++)
+            for (int i = 2; i < collisionSphereData.BottomSpheres.Length; i++)
             {
                 collisionSphereData.BottomSpheres[i].transform.localPosition =
                     new Vector3(debth, bottom, back + (interval * (i - 1))) - control.transform.position;
@@ -155,7 +155,7 @@ namespace SamuraiGame
 
             float interval = (top - bottom + 0.05f) / 9;
 
-            for (int i = 2; i < collisionSphereData.BackSpheres.Count; i++)
+            for (int i = 2; i < collisionSphereData.BackSpheres.Length; i++)
             {
                 collisionSphereData.BackSpheres[i].transform.localPosition =
                     new Vector3(debth, bottom + (interval * (i - 1)), back) - control.transform.position;
@@ -177,11 +177,23 @@ namespace SamuraiGame
 
             float interval = (front - back) / 4;
 
-            for (int i = 2; i < collisionSphereData.UpSpheres.Count; i++)
+            for (int i = 2; i < collisionSphereData.UpSpheres.Length; i++)
             {
                 collisionSphereData.UpSpheres[i].transform.localPosition =
                     new Vector3(debth, top, back + (interval * (i - 1))) - control.transform.position;
             }
+        }
+        private bool FrontOverlapCheckersContains(OverlapChecker checker)
+        {
+            for (int i = 0; i < collisionSphereData.FrontOverlapCheckers.Length; i++)
+            {
+                if (collisionSphereData.FrontOverlapCheckers[i] == checker)
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
         }
     }
 }

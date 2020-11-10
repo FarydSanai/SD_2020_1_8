@@ -31,12 +31,12 @@ namespace SamuraiGame
         }
         public void FixedUpdateSubComponents()
         {
+            FixedUpdateSubComponent(SubComponentType.COLLISION_SPHERES);
             FixedUpdateSubComponent(SubComponentType.RAGDOLL);
             FixedUpdateSubComponent(SubComponentType.LEDGECHECKER);
             FixedUpdateSubComponent(SubComponentType.BLOCKINGOBJECTS);
             FixedUpdateSubComponent(SubComponentType.BOXCOLLIDER_UPDATER);
             FixedUpdateSubComponent(SubComponentType.VERTICAL_VELOCITY);
-            FixedUpdateSubComponent(SubComponentType.COLLISION_SPHERES);
             FixedUpdateSubComponent(SubComponentType.INSTAKILL);
         }
         public void UpdateSubComponents()

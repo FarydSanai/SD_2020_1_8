@@ -39,8 +39,9 @@ namespace SamuraiGame
         public AIController aiController;
         public BoxCollider boxCollider;
         public NavMeshObstacle navMeshObstacle;
+        public float CharacterHP;
 
-        //blocking obj data
+        //sub components
         public BlockingObjData BLOCKING_DATA => subComponentProcessor.blockingData;
         public LedgeGrabData LEDGE_GRAB_DATA => subComponentProcessor.ledgeGrabData;
         public RagdollData RAGDOLL_DATA => subComponentProcessor.ragdollData;

@@ -17,7 +17,7 @@ namespace SamuraiGame
         private List<GameObject> FrontBlockingObjsList = new List<GameObject>();
         private List<GameObject> FrontBlockingCharacters = new List<GameObject>();
 
-        private List<GameObject> FrontSpheresList;
+        private GameObject[] FrontSpheresArray;
         private float DirBlock;
         private void Start()
         {
@@ -28,7 +28,7 @@ namespace SamuraiGame
                 UpBlockingDicCount = 0,
                 ClearFrontBlockingObjDic = ClearFrontBlockingObjDic,
                 RightSideBlocked = RightSideIsBlocked,
-                LeftSideBLocked = LeftSideIsBlocked,
+                LeftSideBlocked = LeftSideIsBlocked,
                 FrontBlockingObjectsList = GetFrontBlockingObjsList,
                 FrontBlockingCharacterList = GetFrontBlockingCharacters,
             };
@@ -166,7 +166,7 @@ namespace SamuraiGame
         {
             if (!control.animationProgress.ForwardIsReversed())
             {
-                FrontSpheresList = control.COLLISION_SPHERE_DATA.FrontSpheres;
+                FrontSpheresArray = control.COLLISION_SPHERE_DATA.FrontSpheres;
                 DirBlock = 1f;
                 foreach (GameObject s in control.COLLISION_SPHERE_DATA.BackSpheres)
                 {
@@ -178,7 +178,7 @@ namespace SamuraiGame
             }
             else
             {
-                FrontSpheresList = control.COLLISION_SPHERE_DATA.BackSpheres;
+                FrontSpheresArray = control.COLLISION_SPHERE_DATA.BackSpheres;
                 DirBlock = -1f;
                 foreach (GameObject s in control.COLLISION_SPHERE_DATA.FrontSpheres)
                 {
@@ -188,24 +188,22 @@ namespace SamuraiGame
                     }
                 }
             }
-            foreach (GameObject s in FrontSpheresList)
+            for(int i = 0; i < FrontSpheresArray.Length; i++)
             {
-                GameObject blockingObj = CollisionDetection.GetCollidingObject(control, s, this.transform.forward *
+                GameObject blockingObj = CollisionDetection.GetCollidingObject(control, FrontSpheresArray[i],
+                                                            this.transform.forward *
                                                             DirBlock,
                                                             control.animationProgress.LatestMoveForward.BlockDistance,
                                                             ref control.BLOCKING_DATA.RaycastContact);
 
                 if (blockingObj != null)
                 {
-                    AddBlockingObjToDic(FrontBlockingObjs, s, blockingObj);
+                    AddBlockingObjToDic(FrontBlockingObjs, FrontSpheresArray[i], blockingObj);
                 }
                 else
                 {
-                    RemoveKeyFromDic(FrontBlockingObjs, s);
+                    RemoveKeyFromDic(FrontBlockingObjs, FrontSpheresArray[i]);
                 }
-
-                //CheckRaycastCollision(s, this.transform.forward * DirBlock, 
-                //        LatestMoveForward.BlockDistance, FrontBlockingObjs);
             }
         }
         private void CheckDownBlocking()

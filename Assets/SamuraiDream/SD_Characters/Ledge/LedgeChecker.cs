@@ -135,7 +135,7 @@ namespace SamuraiGame
             {
                 control.RIGID_BODY.MovePosition(platformEdge + LedgeCalibration);
             }
-            else if(control.BLOCKING_DATA.LeftSideBLocked())
+            else if(control.BLOCKING_DATA.LeftSideBlocked())
             {
                 control.RIGID_BODY.MovePosition(platformEdge + new Vector3(0f, LedgeCalibration.y, -LedgeCalibration.z));
             }

@@ -7,18 +7,21 @@ namespace SamuraiGame
     [System.Serializable]
     public class CollisionSphereData
     {
-        public List<GameObject> FrontSpheres;
-        public List<GameObject> BottomSpheres;
-        public List<GameObject> BackSpheres;
-        public List<GameObject> UpSpheres;
+        public GameObject[] FrontSpheres;
+        public GameObject[] BottomSpheres;
+        public GameObject[] BackSpheres;
+        public GameObject[] UpSpheres;
 
-        public List<OverlapChecker> FrontOverlapCheckers;
-        public List<OverlapChecker> AllOverlapCheckers;
+        public OverlapChecker[] FrontOverlapCheckers;
+        public OverlapChecker[] AllOverlapCheckers;
+
+        public delegate bool ReturnBool(OverlapChecker checker);
+        public ReturnBool FrontOverlapCheckerContains;
 
         public delegate void DoSomething();
-       public DoSomething Reposition_BottomSpheres;
-       public DoSomething Reposition_FrontSpheres;
-       public DoSomething Reposition_BackSpheres;
-       public DoSomething Reposition_TopSpheres;
+        public DoSomething Reposition_BottomSpheres;
+        public DoSomething Reposition_FrontSpheres;
+        public DoSomething Reposition_BackSpheres;
+        public DoSomething Reposition_TopSpheres;
     }
 }

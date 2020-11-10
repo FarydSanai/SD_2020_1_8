@@ -25,6 +25,7 @@ namespace SamuraiGame
 
         private TextMeshProUGUI TooltipText;
         private CharacterController control;
+        private ManualInput controlManualInput;
         private Coroutine TooltipRoutine;
 
         private MovingTooltips movingTooltips;
@@ -36,6 +37,7 @@ namespace SamuraiGame
             //Init fields
             TooltipText = UI_Text.GetComponent<TextMeshProUGUI>();
             control = CharacterManager.Instance.GetPlayableCharacter();
+            controlManualInput = control.GetComponentInChildren<ManualInput>();
 
             //Subscribe to events
             GameEventsManager.Instance.showTooltip += ShowTooltip;
@@ -64,7 +66,7 @@ namespace SamuraiGame
             //Start tooltips coroutine
             if (TooltipRoutine != null)
             {
-                StopCoroutine(_NextTooltip());
+                StopCoroutine(TooltipRoutine);
             }
             if (TooltipRoutine == null)
             {
@@ -75,19 +77,21 @@ namespace SamuraiGame
         {
             for (int i = 0; i < TooltipsList.Count; i++)
             {
-                yield return new WaitForSeconds(0.5f);
-
                 GameEventsManager.Instance.ShowTooltipEvent(i);
 
                 yield return new WaitUntil(() => CharacterCurrentStatesList[i](control));
 
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(0.2f);
+
+                TogglePlayerInput(control, false);
 
                 GameEventsManager.Instance.ShowDummyTooltipEvent();
 
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(1.5f);
 
+                TogglePlayerInput(control, true);
             }
+            //TogglePlayerInput(control, true);
         }
         public void ShowTooltip(int index)
         {
@@ -104,6 +108,21 @@ namespace SamuraiGame
         public void HideTooltip()
         {
             TooltipText.text = string.Empty;
+        }
+        private void TogglePlayerInput(CharacterController control, bool inputEnable)
+        {
+            if (!inputEnable)
+            {
+                VirtualInputManager.Instance.playerInput.enabled = false;
+                control.MoveLeft = false;
+                control.MoveRight = false;
+                control.Turbo = false;
+                control.Jump = false;
+            } else
+            {
+                VirtualInputManager.Instance.playerInput.enabled = true;
+            }
+
         }
     }
 }

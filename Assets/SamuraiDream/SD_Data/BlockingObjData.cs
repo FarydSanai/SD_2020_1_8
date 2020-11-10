@@ -15,7 +15,7 @@ namespace SamuraiGame
         public DoSomething ClearFrontBlockingObjDic;
 
         public delegate bool ReturnBool();
-        public ReturnBool LeftSideBLocked;
+        public ReturnBool LeftSideBlocked;
         public ReturnBool RightSideBlocked;
 
         public delegate List<GameObject> ReturnGameObjList();

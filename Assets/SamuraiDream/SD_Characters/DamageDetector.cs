@@ -28,7 +28,7 @@ namespace SamuraiGame
                 DamagedTrigger = null,
                 AttackingPart = null,
                 BlockedAttack = null,
-                HP = 3f,
+                HP = control.CharacterHP,
                 MarioStompAttack = MarioStompAttack,
                 SwordThrow = SwordThrow,
 
