@@ -6,7 +6,8 @@ namespace SamuraiGame
 {
     public class SubComponentProcessor : MonoBehaviour
     {
-        public Dictionary<SubComponentType, SubComponent> ComponentsDic = new Dictionary<SubComponentType, SubComponent>();
+        //public Dictionary<SubComponentType, SubComponent> ComponentsDic = new Dictionary<SubComponentType, SubComponent>();
+        public SubComponent[] ArrSubComponents;
 
         public CharacterController control;
 
@@ -27,6 +28,7 @@ namespace SamuraiGame
         [Space(10)] public AnimationData animationData;
         private void Awake()
         {
+            ArrSubComponents = new SubComponent[(int)SubComponentType.COUNT];
             control = GetComponentInParent<CharacterController>();
         }
         public void FixedUpdateSubComponents()
@@ -38,27 +40,27 @@ namespace SamuraiGame
             FixedUpdateSubComponent(SubComponentType.BOXCOLLIDER_UPDATER);
             FixedUpdateSubComponent(SubComponentType.VERTICAL_VELOCITY);
             FixedUpdateSubComponent(SubComponentType.INSTAKILL);
+            FixedUpdateSubComponent(SubComponentType.DAMAGE_DETECTOR);
         }
         public void UpdateSubComponents()
         {
             UpdateSubComponent(SubComponentType.MANUALINPUT);
             UpdateSubComponent(SubComponentType.PLAYER_ANIMATION);
             UpdateSubComponent(SubComponentType.PLAYER_ATTACK);
-            UpdateSubComponent(SubComponentType.DAMAGE_DETECTOR);
         }
 
         private void UpdateSubComponent(SubComponentType type)
         {
-            if (ComponentsDic.ContainsKey(type))
+            if (ArrSubComponents[(int)type] != null)
             {
-                ComponentsDic[type].OnUpdate();
+                ArrSubComponents[(int)type].OnUpdate();
             }
         }
         private void FixedUpdateSubComponent(SubComponentType type)
         {
-            if (ComponentsDic.ContainsKey(type))
+            if (ArrSubComponents[(int)type] != null)
             {
-                ComponentsDic[type].OnFixedUpdate();
+                ArrSubComponents[(int)type].OnFixedUpdate();
             }
         }
     }

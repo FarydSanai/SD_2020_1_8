@@ -36,19 +36,21 @@ namespace SamuraiGame
 
                 TakeDamage = TakeDamage,
             };
-            subComponentProcessor.ComponentsDic.Add(SubComponentType.DAMAGE_DETECTOR, this);
             subComponentProcessor.damageData = damageData;
+            subComponentProcessor.ArrSubComponents[(int)SubComponentType.DAMAGE_DETECTOR] = this;
+            //subComponentProcessor.ComponentsDic.Add(SubComponentType.DAMAGE_DETECTOR, this);
+
         }
         public override void OnFixedUpdate()
-        {
-            throw new System.NotImplementedException();
-        }
-        public override void OnUpdate()
         {
             if (AttackManager.Instance.CurrentAttacks.Count > 0)
             {
                 CheckAttack();
             }
+        }
+        public override void OnUpdate()
+        {
+
         }
         private bool AttackIsValid(AttackCondition info)
         {

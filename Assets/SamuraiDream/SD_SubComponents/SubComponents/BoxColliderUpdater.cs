@@ -22,8 +22,10 @@ namespace SamuraiGame
                 LandingPosition = Vector3.zero,
             };
 
-            subComponentProcessor.ComponentsDic.Add(SubComponentType.BOXCOLLIDER_UPDATER, this);
             subComponentProcessor.boxColliderData = boxColliderData;
+            subComponentProcessor.ArrSubComponents[(int)SubComponentType.BOXCOLLIDER_UPDATER] = this;
+            //subComponentProcessor.ComponentsDic.Add(SubComponentType.BOXCOLLIDER_UPDATER, this);
+
         }
         
         public override void OnFixedUpdate()

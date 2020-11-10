@@ -20,7 +20,8 @@ namespace SamuraiGame
 
             SetupBodyParts();
             subComponentProcessor.ragdollData = ragdollData;
-            subComponentProcessor.ComponentsDic.Add(SubComponentType.RAGDOLL, this);
+            subComponentProcessor.ArrSubComponents[(int)SubComponentType.RAGDOLL] = this;
+            //subComponentProcessor.ComponentsDic.Add(SubComponentType.RAGDOLL, this);
 
         }
         public override void OnFixedUpdate()

@@ -34,7 +34,7 @@ namespace SamuraiGame
         {
             foreach (CharacterController control in Characters)
             {
-                if (control.subComponentProcessor.ComponentsDic.ContainsKey(SubComponentType.MANUALINPUT))
+                if (control.subComponentProcessor.ArrSubComponents[(int)SubComponentType.MANUALINPUT] != null)
                 {
                     return control;
                 }

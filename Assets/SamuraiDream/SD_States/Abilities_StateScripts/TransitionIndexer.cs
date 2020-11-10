@@ -253,7 +253,7 @@ namespace SamuraiGame
                         break;
                     case TransitionConditionType.DOUBLE_TAP_UP:
                         {
-                            if (!control.subComponentProcessor.ComponentsDic.ContainsKey(SubComponentType.MANUALINPUT))
+                            if (control.subComponentProcessor.ArrSubComponents[(int)SubComponentType.MANUALINPUT] == null)
                             {
                                 return false;
                             }
@@ -265,7 +265,7 @@ namespace SamuraiGame
                         break;
                     case TransitionConditionType.DOUBLE_TAP_DOWN:
                         {
-                            if (!control.subComponentProcessor.ComponentsDic.ContainsKey(SubComponentType.MANUALINPUT))
+                            if (control.subComponentProcessor.ArrSubComponents[(int)SubComponentType.MANUALINPUT] == null)
                             {
                                 return false;
                             }

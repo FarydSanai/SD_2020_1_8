@@ -16,7 +16,8 @@ namespace SamuraiGame
                 AttackButtonIsReset = false,
             };
             subComponentProcessor.attackData = attackData;
-            subComponentProcessor.ComponentsDic.Add(SubComponentType.PLAYER_ATTACK, this);
+            subComponentProcessor.ArrSubComponents[(int)SubComponentType.PLAYER_ATTACK] = this;
+            //subComponentProcessor.ComponentsDic.Add(SubComponentType.PLAYER_ATTACK, this);
         }
         public override void OnFixedUpdate()
         {

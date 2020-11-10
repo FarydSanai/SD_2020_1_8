@@ -23,11 +23,12 @@ namespace SamuraiGame
                 DeathByInstaKill = DeathByInstaKill,
             };
             subComponentProcessor.instaKillData = instaKillData;
-            subComponentProcessor.ComponentsDic.Add(SubComponentType.INSTAKILL, this);
+            subComponentProcessor.ArrSubComponents[(int)SubComponentType.INSTAKILL] = this;
+            //subComponentProcessor.ComponentsDic.Add(SubComponentType.INSTAKILL, this);
         }
         public override void OnFixedUpdate()
         {
-            if (control.subComponentProcessor.ComponentsDic.ContainsKey(SubComponentType.MANUALINPUT))
+            if (control.subComponentProcessor.ArrSubComponents[(int)SubComponentType.MANUALINPUT] != null)
             {
                 return;
             }
@@ -47,7 +48,7 @@ namespace SamuraiGame
                     {
                         continue;
                     }
-                    if (!c.subComponentProcessor.ComponentsDic.ContainsKey(SubComponentType.MANUALINPUT))
+                    if (c.subComponentProcessor.ArrSubComponents[(int)SubComponentType.MANUALINPUT] == null)
                     {
                         continue;
                     }

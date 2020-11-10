@@ -1,7 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Runtime.InteropServices;
 using UnityEngine;
 
 namespace SamuraiGame
@@ -20,12 +17,23 @@ namespace SamuraiGame
         public int MaxEnemiesCount;
 
         public EnemyType[] enemyArr;
-
         public Coroutine SpawnRoutine;
+
+        public GameObject[] enemies = new GameObject[3];
+
         private void Start()
         {
             enemyArr = System.Enum.GetValues(typeof(EnemyType)) as EnemyType[];
 
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                enemies[i] = SpawnRandomYBot();
+                if (i > 0)
+                {
+                    enemies[i].GetComponentInChildren<Animator>().gameObject.SetActive(false);
+                    enemies[i].GetComponentInChildren<AIController>().gameObject.SetActive(false);
+                }
+            }
             if (SpawnRoutine != null)
             {
                 StopCoroutine(SpawnRoutine);
@@ -34,37 +42,17 @@ namespace SamuraiGame
             {
                 SpawnRoutine = StartCoroutine(_SpawnEnemies());
             }
-
-        }
-        private void Update()
-        {
-            if (EnemySpawnManager.Instance.AliveEnemyList.Count >= MaxAliveEnemiesCount ||
-                EnemySpawnManager.Instance.DeadEnemyList.Count >= MaxEnemiesCount)
-            {
-                if (SpawnRoutine != null)
-                {
-                    StopCoroutine(SpawnRoutine);
-                }
-            }
-            if (SpawnRoutine == null)
-            {
-                if (EnemySpawnManager.Instance.AliveEnemyList.Count < MaxAliveEnemiesCount &&
-                    EnemySpawnManager.Instance.DeadEnemyList.Count < MaxEnemiesCount)
-                {
-                    SpawnRoutine = StartCoroutine(_SpawnEnemies());
-                }
-            }
         }
         IEnumerator _SpawnEnemies()
         {
-            while(true)
+            for (int i = 1; i < MaxEnemiesCount; i++)
             {
-                GameObject newEnemy = SpawnRandomYBot();
-
-                //newEnemy.GetComponent<CharacterController>().COLLISION_SPHERE_DATA.Reposition_FrontSpheres();
-
                 yield return new WaitForSeconds(SpawnDelay);
+
+                enemies[i].transform.Find("ybot Skin").gameObject.SetActive(true);
+                enemies[i].transform.Find("AI").gameObject.SetActive(true);
             }
+            StopCoroutine(SpawnRoutine);
         }
         private GameObject SpawnRandomYBot()
         {
