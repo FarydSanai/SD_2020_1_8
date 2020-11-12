@@ -12,7 +12,7 @@ namespace SamuraiGame
         private Dictionary<GameObject, GameObject> UpBlockingObjs = new Dictionary<GameObject, GameObject>();
         private Dictionary<GameObject, GameObject> DownBlockingObjs = new Dictionary<GameObject, GameObject>();
 
-        private List<CharacterController> MarioStumpTargets = new List<CharacterController>();
+        private List<CharacterController> MarioStompTargets = new List<CharacterController>();
 
         private List<GameObject> FrontBlockingObjsList = new List<GameObject>();
         private List<GameObject> FrontBlockingCharacters = new List<GameObject>();
@@ -104,16 +104,16 @@ namespace SamuraiGame
         {
             if (control.RIGID_BODY.velocity.y >= 0f)
             {
-                MarioStumpTargets.Clear();
+                MarioStompTargets.Clear();
                 DownBlockingObjs.Clear();
                 return;
             }
-            if (MarioStumpTargets.Count > 0)
+            if (MarioStompTargets.Count > 0)
             {
                 control.RIGID_BODY.velocity = Vector3.zero;
                 control.RIGID_BODY.AddForce(Vector3.up * 250f);
 
-                foreach (CharacterController c in MarioStumpTargets)
+                foreach (CharacterController c in MarioStompTargets)
                 {
                     if (control.aiController != null && c.aiController != null)
                     {
@@ -135,7 +135,7 @@ namespace SamuraiGame
                     c.DAMAGE_DATA.TakeDamage(info);
                 }
 
-                MarioStumpTargets.Clear();
+                MarioStompTargets.Clear();
                 return;
             }
 
@@ -153,9 +153,9 @@ namespace SamuraiGame
                         {
                             if (c != control)
                             {
-                                if (!MarioStumpTargets.Contains(c))
+                                if (!MarioStompTargets.Contains(c))
                                 {
-                                    MarioStumpTargets.Add(c);
+                                    MarioStompTargets.Add(c);
                                 }
                             }
                         }
@@ -223,7 +223,7 @@ namespace SamuraiGame
                 }
             }
         }
-        private void CheckUpBlocking()
+        public void CheckUpBlocking()
         {
             foreach (GameObject s in control.COLLISION_SPHERE_DATA.UpSpheres)
             {
@@ -316,6 +316,23 @@ namespace SamuraiGame
             }
 
             return FrontBlockingObjsList;
+        }
+        public static bool UpIsBlocked(CharacterController control)
+        {
+            foreach (GameObject o in control.COLLISION_SPHERE_DATA.UpSpheres)
+            {
+                Debug.DrawRay(o.transform.position, control.transform.up * 0.4f, Color.yellow);
+                RaycastHit hit;
+
+                if (Physics.Raycast(o.transform.position, control.transform.up, out hit, 0.125f))
+                {
+                    if (hit.collider.transform.root.gameObject != control.gameObject)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

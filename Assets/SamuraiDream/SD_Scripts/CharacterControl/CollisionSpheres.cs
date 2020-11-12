@@ -192,7 +192,6 @@ namespace SamuraiGame
                 {
                     return true;
                 }
-                return false;
             }
             return false;
         }

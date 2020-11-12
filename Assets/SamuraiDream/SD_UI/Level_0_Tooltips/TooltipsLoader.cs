@@ -25,19 +25,18 @@ namespace SamuraiGame
 
         private TextMeshProUGUI TooltipText;
         private CharacterController control;
-        private ManualInput controlManualInput;
         private Coroutine TooltipRoutine;
 
         private MovingTooltips movingTooltips;
         private AttackTooltips attackTooltips;
+
         public DummyTooltips DummyTooltips;
 
         private void Start()
         {
             //Init fields
             TooltipText = UI_Text.GetComponent<TextMeshProUGUI>();
-            control = CharacterManager.Instance.GetPlayableCharacter();
-            controlManualInput = control.GetComponentInChildren<ManualInput>();
+            control = CharacterManager.Instance.GetCharacter(PlayableCharacterType.DEFAULT);
 
             //Subscribe to events
             GameEventsManager.Instance.showTooltip += ShowTooltip;
@@ -81,17 +80,12 @@ namespace SamuraiGame
 
                 yield return new WaitUntil(() => CharacterCurrentStatesList[i](control));
 
-                yield return new WaitForSeconds(0.2f);
-
-                TogglePlayerInput(control, false);
+                yield return new WaitForSeconds(0.5f);
 
                 GameEventsManager.Instance.ShowDummyTooltipEvent();
 
                 yield return new WaitForSeconds(1.5f);
-
-                TogglePlayerInput(control, true);
             }
-            //TogglePlayerInput(control, true);
         }
         public void ShowTooltip(int index)
         {

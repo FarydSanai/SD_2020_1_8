@@ -24,7 +24,7 @@ namespace SamuraiGame
                 {
                     characterState.characterControl.transform.
                         Translate(Vector3.up * Speed *
-                                  SpeedGraph.Evaluate(stateInfo.normalizedTime)*
+                                  SpeedGraph.Evaluate(stateInfo.normalizedTime) *
                                   Time.deltaTime);
                 }
 
@@ -35,24 +35,5 @@ namespace SamuraiGame
         {
 
         }
-
-        //private bool UpIsBlocked(CharacterController control)
-        //{
-        //    foreach (GameObject o in control.collisionSpheres.TopSpheres)
-        //    {
-        //        Debug.DrawRay(o.transform.position, control.transform.up * 0.4f, Color.yellow);
-        //        RaycastHit hit;
-
-        //        if (Physics.Raycast(o.transform.position, control.transform.up, out hit, 0.125f))
-        //        {
-        //            if (hit.collider.transform.root.gameObject != control.gameObject && 
-        //                !Ledge.IsLedge(hit.collider.gameObject))
-        //            {
-        //                return true;
-        //            }
-        //        }
-        //    }
-        //    return false;
-        //}
     }
 }

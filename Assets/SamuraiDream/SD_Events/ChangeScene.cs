@@ -1,16 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 namespace SamuraiGame
 {
     public class ChangeScene : MonoBehaviour
     {
-        public string nextScene;
+        public string NextScene;
 
-        public void ChangeSceneTo()
+        private void OnTriggerEnter()
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(nextScene);
+            Debug.Log("??");
+            ChangeSceneTo(NextScene);
+        }
+        public void ChangeSceneTo(string sceneName)
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        }
+        public static bool IsNextScenePoint(GameObject point)
+        {
+            if (point.GetComponent<ChangeScene>() == null)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
     }
 }

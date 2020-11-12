@@ -18,7 +18,7 @@ namespace SamuraiGame
             AttackStates.Add(CharacterAttack_RoundKick);
             AttackStates.Add(CharacterAttack_Uppercut);
             AttackStates.Add(CharacterAttack_Shoruyken);
-            AttackStates.Add(CharacterAttack_DownSmash);
+            //AttackStates.Add(CharacterAttack_DownSmash);
             AttackStates.Add(CharacterAttack_BadKick);
         }
         private bool CharacterAttack_One(CharacterController control)
@@ -83,19 +83,20 @@ namespace SamuraiGame
             }
             return false;
         }
-        private bool CharacterAttack_DownSmash(CharacterController control)
-        {
-            if (control.GROUND_DATA.Ground == null &&
-                control.Attack && 
-               !control.ANIMATION_DATA.IsRunning(typeof(Jump)))
-            {
-                return true;
-            }
-            return false;
-        }
+        //private bool CharacterAttack_DownSmash(CharacterController control)
+        //{
+        //    if (control.GROUND_DATA.Ground == null &&
+        //        control.Attack && 
+        //       !control.ANIMATION_DATA.IsRunning(typeof(Jump)))
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
         private bool CharacterAttack_BadKick(CharacterController control)
         {
-            if (control.GROUND_DATA.Ground != null &&
+            if ((control.MoveLeft || control.MoveRight) &&
+                control.GROUND_DATA.Ground != null &&
                 control.MoveDown &&
                 control.Attack)
             {

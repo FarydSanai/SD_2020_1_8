@@ -38,6 +38,8 @@ namespace SamuraiGame
         BLOCKING,
         NOT_BLOCKING,
         ATTACK_IS_BLOCKED,
+
+        UP_IS_NOT_BLOCKING,
     }
     [CreateAssetMenu(fileName = "New state", menuName = "SamuraiDream/AbilityData/TransitionIndexer")]
     public class TransitionIndexer : CharacterAbility
@@ -199,9 +201,9 @@ namespace SamuraiGame
                         break;
                     case TransitionConditionType.BLOCKED_BY_WALL:
                         {
-                            foreach (OverlapChecker oc in control.COLLISION_SPHERE_DATA.FrontOverlapCheckers)
+                            for (int i = 0; i < control.COLLISION_SPHERE_DATA.FrontOverlapCheckers.Length; i++)
                             {
-                                if (!oc.ObjIsOverlapping)
+                                if (control.COLLISION_SPHERE_DATA.FrontOverlapCheckers[i].ObjIsOverlapping == false)
                                 {
                                     return false;
                                 }
@@ -211,9 +213,9 @@ namespace SamuraiGame
                     case TransitionConditionType.NOT_BLOCKED_BY_WALL:
                         {
                             bool AllIsOverlapping = true;
-                            foreach (OverlapChecker oc in control.COLLISION_SPHERE_DATA.FrontOverlapCheckers)
+                            for (int i = 0; i < control.COLLISION_SPHERE_DATA.FrontOverlapCheckers.Length; i++)
                             {
-                                if (!oc.ObjIsOverlapping)
+                                if (control.COLLISION_SPHERE_DATA.FrontOverlapCheckers[i].ObjIsOverlapping == false)
                                 {
                                     AllIsOverlapping = false;
                                 }
@@ -368,6 +370,14 @@ namespace SamuraiGame
                     case TransitionConditionType.ATTACK_IS_BLOCKED:
                         {
                             if (control.DAMAGE_DATA.BlockedAttack == null)
+                            {
+                                return false;
+                            }
+                        }
+                        break;
+                    case TransitionConditionType.UP_IS_NOT_BLOCKING:
+                        {
+                            if (BlockingObj.UpIsBlocked(control))
                             {
                                 return false;
                             }

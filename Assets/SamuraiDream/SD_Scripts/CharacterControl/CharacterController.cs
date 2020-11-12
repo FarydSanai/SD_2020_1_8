@@ -17,6 +17,7 @@ namespace SamuraiGame
         Turbo,
         Turn,
         LockTransition,
+        UpIsBlocked,
     }
     public class CharacterController : MonoBehaviour
     {

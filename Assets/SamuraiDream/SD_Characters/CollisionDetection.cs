@@ -21,7 +21,8 @@ namespace SamuraiGame
                     !IsIgnoringCharacter(control, hit.collider) &&
                     !Ledge.IsLedgeChecker(hit.collider.gameObject) &&
                     !MeleeWeapon.IsWeapon(hit.collider.gameObject) &&
-                    !TrapSpikes.IsTrap(hit.collider.gameObject))
+                    !TrapSpikes.IsTrap(hit.collider.gameObject) &&
+                    !ChangeScene.IsNextScenePoint(hit.collider.gameObject))
                 {
                     collisionPoint = hit.point;
                     return hit.collider.transform.root.gameObject;

@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1308050749530533637, guid: 8b5d0b1e97bd0614b86021d5fb7a0b59, type: 3}
+      propertyPath: CharacterHP
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1947292678012445104, guid: 8b5d0b1e97bd0614b86021d5fb7a0b59, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: -0.09124447
