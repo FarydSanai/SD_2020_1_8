@@ -128,6 +128,8 @@ namespace SamuraiGame
                             damageData.SetData(info.Attacker, info.AttackAbility,
                                        data.Key, info.Attacker.GetAttackingPart(part));
 
+                            SoundManager.PlaySound();
+
                             return true;
                         }
                     }
