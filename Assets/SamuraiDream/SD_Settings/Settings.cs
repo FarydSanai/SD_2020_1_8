@@ -22,6 +22,10 @@ namespace SamuraiGame
             //Default Keys
             VirtualInputManager.Instance.LoadKeys();
             //VirtualInputManager.Instance.SetDefaultKeys();
+
+            //Init sound manager sounds dictiomary
+            SoundManager.Initialize();
+
         }
     }
 }

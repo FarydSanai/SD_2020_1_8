@@ -7,7 +7,6 @@ namespace SamuraiGame
 {
     public class TriggerDetector : MonoBehaviour
     {
-        //public List<Collider> CollidingParts = new List<Collider>();
         public Vector3 LastPosition;
         public Quaternion LastRotation;
 

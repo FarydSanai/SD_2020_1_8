@@ -10,7 +10,6 @@ namespace SamuraiGame
     {
         public DamageData damageData;
 
-
         [Header("Damage Setup")]
         [SerializeField]
         private List<RuntimeAnimatorController> HitReactionsList = new List<RuntimeAnimatorController>();
@@ -36,6 +35,7 @@ namespace SamuraiGame
 
                 TakeDamage = TakeDamage,
             };
+
             subComponentProcessor.damageData = damageData;
             subComponentProcessor.ArrSubComponents[(int)SubComponentType.DAMAGE_DETECTOR] = this;
             //subComponentProcessor.ComponentsDic.Add(SubComponentType.DAMAGE_DETECTOR, this);
@@ -128,7 +128,7 @@ namespace SamuraiGame
                             damageData.SetData(info.Attacker, info.AttackAbility,
                                        data.Key, info.Attacker.GetAttackingPart(part));
 
-                            SoundManager.PlaySound();
+                            SoundManager.PlaySound(SoundManager.Sound.PlayerAttack);
 
                             return true;
                         }
@@ -243,7 +243,7 @@ namespace SamuraiGame
                 }
             }
  
-            Debug.Log(string.Format("{0} hits: {1}", info.Attacker.gameObject.name, this.gameObject.name));
+            //Debug.Log(string.Format("{0} hits: {1}", info.Attacker.gameObject.name, this.gameObject.name));
 
             info.CurrentHits++;
             damageData.HP -= info.AttackAbility.Damage;

@@ -51,3 +51,4 @@ MonoBehaviour:
   MaxMomentum: 0
   ClearMomentumOnExit: 0
   MoveOnHit: 0
+  SoundType: 2

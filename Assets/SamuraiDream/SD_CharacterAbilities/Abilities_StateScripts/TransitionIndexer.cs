@@ -255,7 +255,8 @@ namespace SamuraiGame
                         break;
                     case TransitionConditionType.DOUBLE_TAP_UP:
                         {
-                            if (control.subComponentProcessor.ArrSubComponents[(int)SubComponentType.MANUALINPUT] == null)
+                            if (control.subComponentProcessor
+                                       .ArrSubComponents[(int)SubComponentType.MANUALINPUT] == null)
                             {
                                 return false;
                             }

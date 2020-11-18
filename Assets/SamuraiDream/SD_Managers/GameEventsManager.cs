@@ -9,11 +9,13 @@ namespace SamuraiGame
         {
             showTooltip?.Invoke(index);
         }
+
         public event Action showDummyTooltip;
         public void ShowDummyTooltipEvent()
         {
             showDummyTooltip?.Invoke();
         }
+
         public event Action hideTooltip;
         public void HideTooltipEvent()
         {

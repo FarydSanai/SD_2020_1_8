@@ -30,6 +30,9 @@ namespace SamuraiGame
         [Header("Move on hit")]
         public bool MoveOnHit;
 
+        [Header("State sound")]
+        public SoundManager.Sound SoundType;
+
         public override void OnEnter(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {
             characterState.characterControl.animationProgress.LatestMoveForward = this;
@@ -115,6 +118,11 @@ namespace SamuraiGame
                 {
                     ControlledMove(characterState.characterControl, animator, stateInfo);
                 }
+            }
+
+            if (SoundType != SoundManager.Sound.NONE)
+            {
+                SoundManager.PlaySound(SoundType, characterState.characterControl.transform.position);
             }
         }
         public override void OnExit(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
