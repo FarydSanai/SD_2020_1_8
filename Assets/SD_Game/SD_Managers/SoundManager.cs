@@ -12,8 +12,9 @@ namespace SamuraiGame
             PlayerAttack,
             PlayerWalk,
             PlayerRun,
+            PlayerRunToStop,
             PlayerJump,
-            PlayerFall,
+            PlayerLanding,
             DeathFall,
         }
 
@@ -23,11 +24,14 @@ namespace SamuraiGame
 
         public static void Initialize()
         {
+            Sound[] soundArr = System.Enum.GetValues(typeof(Sound)) as Sound[];
             soundTimingDic = new Dictionary<Sound, float>();
-            soundTimingDic[Sound.PlayerWalk] = 0f;
-            soundTimingDic[Sound.PlayerRun] = 0f;
-        }
 
+            for (int i = 0; i < soundArr.Length; i++)
+            {
+                soundTimingDic[soundArr[i]] = 0f;
+            }
+        }
         public static void PlaySound(Sound sound, Vector3 position)
         {
             if (IntervalSound(sound))
@@ -71,49 +75,44 @@ namespace SamuraiGame
                     }
                 case Sound.PlayerWalk:
                     {
-                        if (soundTimingDic.ContainsKey(sound))
-                        {
-                            float lastTimePlayed = soundTimingDic[sound];
-                            float maxTiming = 0.5f;
-
-                            if ((lastTimePlayed + maxTiming) < Time.time)
-                            {
-                                soundTimingDic[sound] = Time.time;
-                                return true;
-                            }
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                        else
-                        {
-                            return true;
-                        }
+                        return MakeInterval(sound, 0.5f);
                     }
                 case Sound.PlayerRun:
                     {
-                        if (soundTimingDic.ContainsKey(sound))
-                        {
-                            float lastTimePlayed = soundTimingDic[sound];
-                            float maxTiming = 0.25f;
-
-                            if ((lastTimePlayed + maxTiming) < Time.time)
-                            {
-                                soundTimingDic[sound] = Time.time;
-                                return true;
-                            }
-                            else
-                            {
-                                return false;
-                            }
-                        }
-                        else
-                        {
-                            return true;
-                        }
+                        return MakeInterval(sound, 0.25f);
+                    }
+                case Sound.PlayerRunToStop:
+                    {
+                        return MakeInterval(sound, 1f);
+                    }
+                case Sound.PlayerLanding:
+                    {
+                        return MakeInterval(sound, 1f);
                     }
                     //break;
+            }
+        }
+
+        private static bool MakeInterval(Sound sound, float timing)
+        {
+            if (soundTimingDic.ContainsKey(sound))
+            {
+                float lastTimePlayed = soundTimingDic[sound];
+                float maxTiming = timing;
+
+                if ((lastTimePlayed + maxTiming) < Time.time)
+                {
+                    soundTimingDic[sound] = Time.time;
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return true;
             }
         }
 

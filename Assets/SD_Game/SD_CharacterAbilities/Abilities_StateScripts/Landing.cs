@@ -11,6 +11,8 @@ namespace SamuraiGame
         {
             //animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Jump], false);
             animator.SetBool(HashManager.Instance.DicMainParams[TransitionParameter.Move], false);
+
+            SoundManager.PlaySound(SoundManager.Sound.PlayerLanding);
         }
         public override void UpdateAbility(CharacterState characterState, Animator animator, AnimatorStateInfo stateInfo)
         {

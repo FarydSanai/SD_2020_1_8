@@ -47,6 +47,10 @@ MonoBehaviour:
   - sound: 1
     audioClip: {fileID: 8300000, guid: 2e071f5b8b8467d45a5e6e24c23c6ad4, type: 3}
   - sound: 2
-    audioClip: {fileID: 8300000, guid: 4c4489887436a8a4397d7c0b74567f76, type: 3}
+    audioClip: {fileID: 8300000, guid: 12dfc860b6d059e408ad6ff3cb276219, type: 3}
   - sound: 3
-    audioClip: {fileID: 8300000, guid: 4c4489887436a8a4397d7c0b74567f76, type: 3}
+    audioClip: {fileID: 8300000, guid: 12dfc860b6d059e408ad6ff3cb276219, type: 3}
+  - sound: 4
+    audioClip: {fileID: 8300000, guid: 2428079d30867434f9752690f7a7c420, type: 3}
+  - sound: 6
+    audioClip: {fileID: 8300000, guid: ac93b89731274504aa69505392cbc431, type: 3}
